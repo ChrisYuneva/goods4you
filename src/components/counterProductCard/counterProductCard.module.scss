@@ -1,0 +1,25 @@
+.counter {
+  display: flex;
+  gap: 9px;
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    width: 48px;
+  }
+
+  .count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 62px;
+    font-size: 14px;
+    line-height: 140%;
+    background-color: var(--light-grey);
+    color: var(--grey);
+    text-align: center;
+    border-radius: 4px;
+  }
+}

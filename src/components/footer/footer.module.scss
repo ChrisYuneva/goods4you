@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark-grey);
+  height: 80px;
+
+  .logo {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--white);
+  }
+}

@@ -1,0 +1,75 @@
+.banner {
+  background-color: var(--purple);
+  padding-top: 100px;
+  padding-bottom: 93px;
+
+  .content {
+    position: relative;
+    z-index: 1;
+
+    .headline {
+      color: var(--white);
+      font-size: 36px;
+      max-width: 580px;
+      font-weight: 400;
+      line-height: 140%;
+      margin: 0;
+    }
+
+    .description {
+      color: var(--white);
+      font-size: 16px;
+      max-width: 480px;
+      font-weight: 600;
+      line-height: 140%;
+      margin: 20px 0 40px 0;
+    }
+
+    .backText {
+      position: absolute;
+      bottom: -25px;
+      left: 32px;
+      color: rgba(255, 255, 255, 0.12);
+      font-size: 200px;
+      font-weight: 700;
+      margin: 0;
+      z-index: -1;
+    }
+  }
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  margin: 54px 0 60px;
+
+  .catalogTitle {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 44px;
+  }
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--purple);
+  padding-top: 35px;
+  padding-bottom: 123px;
+
+  .faqContent {
+    margin: 0 139px 0 162px;
+    width: 880px;
+
+    .faqTitle {
+      margin: 0 0 27px;
+      color: var(--white);
+      font-size: 30px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 41px;
+    }
+  }
+}
