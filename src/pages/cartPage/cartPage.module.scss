@@ -1,0 +1,73 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 55px;
+  gap: 55px;
+
+  .title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 43px;
+    color: var(--grey);
+    margin: 0;
+  }
+
+  .content {
+    display: flex;
+    gap: 53px;
+
+    .products {
+      width: 780px;
+      box-sizing: border-box;
+      padding: 30px 47px;
+      border: 1px solid #D9D9D9;
+      border-radius: 4px;
+    }
+
+    .total {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 30px;
+
+      .totalCount {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 28px;
+        margin-bottom: 42px;
+      }
+      .count {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 28px;
+        color: var(--grey);
+        margin-bottom: 42px;
+      }
+      .totalPrice {
+        font-size: 20px;
+        line-height: 28px;
+      }
+
+      .price {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+        color: var(--grey);
+      }
+
+      .totalDiscount {
+        font-size: 24px;
+        line-height: 34px;
+        margin-top: 6px;
+      }
+
+      .discount {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 34px;
+        color: var(--grey);
+        margin-top: 6px;
+      }
+    }
+  }
+}

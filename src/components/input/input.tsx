@@ -1,11 +1,11 @@
 import styles from './input.module.scss';
-import {ChangeEventHandler} from 'react';
+import {ChangeEvent} from 'react';
 
 interface InputProps {
     id: string;
     placeholder: string;
     value: string;
-    onChange: ChangeEventHandler<HTMLInputElement>;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Input({ id, placeholder, value, onChange }: InputProps) {

@@ -1,0 +1,51 @@
+.description {
+  width: 100%;
+  .name {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;
+    color: var(--grey);
+    margin: 0;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+
+    .text {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 23px;
+      color: var(--grey);
+    }
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 48px;
+
+    .rating {
+      display: flex;
+      gap: 4px;
+
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .text {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 23px;
+      color: var(--grey);
+    }
+
+    .btn {
+      margin-top: 37px;
+      max-width: 200px;
+    }
+  }
+}

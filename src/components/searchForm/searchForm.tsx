@@ -11,7 +11,12 @@ function SearchForm() {
             console.log(value);
             setValue('');
         }}>
-            <Input id='search' placeholder='Search by title' value={value} onChange={e => setValue(e.target.value)}/>
+            <Input
+                id='search'
+                placeholder='Search by title'
+                value={value}
+                onChange={e => setValue(e.target.value)}
+            />
             <Button
                 ariaLabel='Find a product'
                 type='submit'

@@ -8,6 +8,7 @@ import {
 import CartPage from './pages/cartPage/cartPage.tsx';
 import ProductPage from './pages/productPage/productPage.tsx';
 import Layout from './components/layout/layout.tsx';
+import NotFoundPage from './pages/notFoundPage/notFoundPage.tsx';
 
 const router = createBrowserRouter([
     {
@@ -23,9 +24,10 @@ const router = createBrowserRouter([
             },
             {
                 path: '/product/:id',
-                element: <ProductPage/>,
+                element: <ProductPage />,
             },
-        ]
+        ],
+        errorElement: <NotFoundPage />,
     }
 ]);
 

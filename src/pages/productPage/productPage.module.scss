@@ -1,0 +1,45 @@
+.wrapper {
+  padding-top: 55px;
+  padding-bottom: 109px;
+  .title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 43.35px;
+    color: var(--grey);
+    margin: 0;
+  }
+
+  .product {
+    display: flex;
+    margin-top: 55px;
+    gap: 42px;
+
+    .slider {
+      display: flex;
+      flex-direction: column;
+      max-width: 520px;
+
+      .mainImg {
+        width: 100%;
+      }
+
+      .items {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+
+        .img {
+          width: 70px;
+          height: 75px;
+          border-radius: 4px;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+
+        .activeImg {
+          border: 3px solid var(--hover-grey);
+        }
+      }
+    }
+  }
+}

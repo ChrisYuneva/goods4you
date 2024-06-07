@@ -4,7 +4,7 @@ import productImg from '../../assets/images/product.avif';
 import Button from '../button/button.tsx';
 
 function Catalog() {
-    const products = new Array(9).fill(1);
+    const products: number[] = new Array(9).fill(1);
 
     return (
         <main className={styles.catalog}>
