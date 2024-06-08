@@ -18,16 +18,12 @@ function Accordion({ title, text, isLast }: AccordionProps) {
     }
 
     return (
-        <div aria-label='Disclose answer' className={cn(styles.accordion, {[styles.last]: isLast})} onClick={showContent}>
+        <div aria-controls='menu' tabIndex={0} role='button' aria-expanded={isVisible} aria-label='Disclose answer' className={cn(styles.accordion, {[styles.last]: isLast})} onClick={showContent}>
             <div className={styles.content}>
                 <span className={styles.title}>{title}</span>
-                <img src={cross} alt='Disclose answer' className={cn(styles.icon, {[styles.rotate]: isVisible})} />
+                <img src={cross} alt='' className={cn(styles.icon, {[styles.rotate]: isVisible})} />
             </div>
-            <p
-                className={cn(styles.text, {[styles.visibleText]: isVisible})}
-                ref={textRef}
-                style={isVisible ? {height: `${textRef.current?.scrollHeight}px`, opacity: 1} : {height: '0px', opacity: 0}}
-            >
+            <p id='menu' className={cn(styles.text, {[styles.visibleText]: isVisible})} ref={textRef} tabIndex={0}>
                 {text}
             </p>
         </div>

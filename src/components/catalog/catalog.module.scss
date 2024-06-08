@@ -1,7 +1,9 @@
+@import '../../styles/breakpoints';
+
 .catalog {
   display: flex;
   flex-direction: column;
-  //align-items: center;
+  align-items: center;
 
   .products {
     display: grid;
@@ -10,13 +12,18 @@
     row-gap: 40px;
     margin-top: 40px;
     width: 100%;
-  }
 
-  .btnContainer {
-    margin-left: 462px;
-    .btn {
-      padding: 22px 62px;
-      margin-top: 60px;
+    @include for-phone {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include for-tablet {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
+
+    .btn {
+      margin-top: 60px;
+      width: 200px;
+    }
 }

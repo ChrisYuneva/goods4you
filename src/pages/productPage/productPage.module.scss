@@ -1,6 +1,21 @@
+@import '../../styles/breakpoints';
+
 .wrapper {
   padding-top: 55px;
   padding-bottom: 109px;
+
+  @include for-phone {
+    padding-bottom: 89px;
+  }
+
+  @include for-tablet {
+    padding-bottom: 79px;
+  }
+
+  @include for-desktop {
+    padding-bottom: 100px;
+  }
+
   .title {
     font-size: 30px;
     font-weight: 700;
@@ -14,10 +29,33 @@
     margin-top: 55px;
     gap: 42px;
 
+    @include for-phone {
+      flex-direction: column;
+      margin-top: 35px;
+    }
+
+    @include for-tablet {
+      margin-top: 35px;
+      gap: 30px;
+    }
+
     .slider {
       display: flex;
       flex-direction: column;
       max-width: 520px;
+
+      @include for-phone {
+        max-width: 100%;
+      }
+
+      @include for-tablet {
+        max-width: 40%;
+      }
+
+      @include for-desktop {
+        max-width: 40%;
+        justify-content: space-between;
+      }
 
       .mainImg {
         width: 100%;
@@ -27,6 +65,18 @@
         display: flex;
         gap: 20px;
         margin-top: 20px;
+
+        @include for-phone {
+          overflow: scroll;
+        }
+
+        @include for-tablet {
+          overflow: scroll;
+        }
+
+        @include for-desktop {
+          overflow: scroll;
+        }
 
         .img {
           width: 70px;

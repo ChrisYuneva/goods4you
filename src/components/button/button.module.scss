@@ -1,3 +1,5 @@
+@import '../../styles/breakpoints';
+
 .btn {
   background-color: var(--accent);
   color: var(--white);
@@ -11,5 +13,10 @@
 
   &:hover {
     background-color: var(--accent-hover);
+  }
+
+  @include for-phone {
+    padding: 12px 20px;
+    font-size: 14px;
   }
 }

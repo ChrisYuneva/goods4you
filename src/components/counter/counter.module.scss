@@ -1,6 +1,15 @@
+@import '../../styles/breakpoints';
+
 .counter {
   display: flex;
   gap: 9px;
+  height: 48px;
+
+  @include for-phone {
+    width: 100%;
+    gap: 0;
+    justify-content: space-between;
+  }
 
   .btn {
     display: flex;
@@ -14,12 +23,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 62px;
     font-size: 14px;
     line-height: 140%;
     background-color: var(--light-grey);
     color: var(--grey);
-    text-align: center;
     border-radius: 4px;
+    width: 62px;
+
+    @include for-phone {
+      width: 50%;
+    }
   }
 }

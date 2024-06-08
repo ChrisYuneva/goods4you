@@ -1,3 +1,5 @@
+@import '../../styles/breakpoints';
+
 .wrapper{
   display: flex;
   flex-direction: column;
@@ -7,7 +9,6 @@
   box-sizing: border-box;
 
   .error{
-    margin: 0;
     font-size: 200px;
     color: var(--accent);
     text-shadow:
@@ -20,14 +21,19 @@
             7px 7px 1px var(--accent-hover),
             8px 8px 1px var(--accent-hover),
             25px 25px 8px rgba(0,0,0, 0.2);
+    margin-bottom: 54px;
+
+    @include for-phone {
+      font-size: 140px;
+    }
   }
 
   .text{
-    margin: 54px 0;
     font-size: 24px;
     font-weight: 600;
-    color: var(--dark-grey);
+    color: var(--grey);
     text-align: center;
+    margin: 0;
   }
 
   .link {
@@ -41,6 +47,7 @@
     border: none;
     transition: .4s;
     text-decoration: none;
+    margin-top: 54px;
 
     &:hover {
       background-color: var(--accent-hover);

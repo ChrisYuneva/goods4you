@@ -9,7 +9,7 @@ import ProductDescription from '../../components/productDescription/productDescr
 // }
 
 function ProductPage() {
-    const imgArr: number[] = new Array(6).fill(1);
+    const imgArr = new Array(6).fill(product);
     const [activeImg, setActiveImg] = useState(0);
 
     function changeMainImg(index: number) {
@@ -18,16 +18,14 @@ function ProductPage() {
 
     return (
         <section className={cn(styles.wrapper, 'container')}>
-            <h3 className={styles.title}>Product 5</h3>
+            <p className={styles.title}>Product 5</p>
             <main className={styles.product}>
                 <section className={styles.slider}>
-                    {/*<div >*/}
-                        <img src={product} alt=''className={styles.mainImg}/>
-                    {/*</div>*/}
+                    <img src={imgArr[activeImg]} alt='Puma Force 1 Shadow' className={styles.mainImg}/>
                     <div className={styles.items}>
                         {
-                            imgArr.map((_, i) => (
-                                <img key={i} src={product} alt='' className={cn(styles.img, {[styles.activeImg]: i ===activeImg})} onClick={() => changeMainImg(i)}/>
+                            imgArr.map((item, i) => (
+                                <img key={i} src={item} alt='Puma Force 1 Shadow' className={cn(styles.img, {[styles.activeImg]: i === activeImg})} onClick={() => changeMainImg(i)}/>
                             ))
                         }
                     </div>

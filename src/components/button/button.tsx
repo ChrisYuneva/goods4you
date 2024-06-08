@@ -1,10 +1,11 @@
 import styles from './button.module.scss';
 import cn from 'classnames';
+import React from 'react';
 
 interface ButtonProps {
     children: React.ReactNode;
     ariaLabel: string;
-    onClick?: () => void;
+    onClick: () => void;
     type?: 'submit' | 'reset' | 'button';
     className?: string;
 }

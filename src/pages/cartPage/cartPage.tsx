@@ -10,9 +10,9 @@ function CartPage() {
             <h1 className={styles.title}>My cart</h1>
             <main className={styles.content}>
                 <section className={styles.products}>
-                    <ProductItem imgSrc={product} name='Essence Mascara Lash Princess' price='110 $' quantity={1}/>
-                    <ProductItem imgSrc={product} name='Essence Mascara Lash Princess' price='110 $' quantity={1}/>
-                    <ProductItem imgSrc={product} name='Essence Mascara Lash Princess' price='110 $' quantity={1}/>
+                    <ProductItem id='1' imgSrc={product} name='Essence Mascara Lash Princess' price='110 $' quantity={1} counterChange={() => {}}/>
+                    <ProductItem id='1' imgSrc={product} name='Essence Mascara Lash Princess' price='110 $' quantity={1} counterChange={() => {}}/>
+                    <ProductItem id='1' imgSrc={product} name='Essence Mascara Lash Princess' price='110 $' quantity={1} counterChange={() => {}}/>
                 </section>
                 <section className={styles.total}>
                     <DescriptionItem title='Total count:' className={styles.totalCount}>

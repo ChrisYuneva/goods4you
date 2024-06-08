@@ -1,18 +1,24 @@
 import styles from './header.module.scss';
 import Navigation from '../navigation/navigation.tsx';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {useMemo} from 'react';
+import BurgerMenu from '../burgerMenu/burgerMenu.tsx';
 
 function Header() {
-    const navigate = useNavigate();
     const location = useLocation();
+
     const isHome = useMemo(() => location.pathname === '/', [location.pathname]);
 
     return (
         <header className={`${styles.header} container ${isHome ? styles.headerHome : ''}`}>
             <div className={`${styles.content} ${isHome ? styles.home : ''}`}>
-                <h2 className={styles.logo} onClick={() => navigate('/')}>Goods4you</h2>
-                <Navigation type="header"/>
+                <Link to={'/'} className={styles.logo} aria-label='Go to home page'>Goods4you</Link>
+                <div className={styles.nav}>
+                    <Navigation type="header"/>
+                </div>
+                <div className={styles.mobileNav}>
+                    <BurgerMenu />
+                </div>
             </div>
         </header>
     )

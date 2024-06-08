@@ -1,5 +1,8 @@
+@import '../../styles/breakpoints';
+
 .description {
   width: 100%;
+
   .name {
     font-size: 24px;
     font-weight: 600;
@@ -12,11 +15,24 @@
     display: flex;
     justify-content: space-between;
 
+    @include for-phone {
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .text {
       font-size: 16px;
       font-weight: 600;
       line-height: 23px;
       color: var(--grey);
+
+      @include for-phone {
+        line-height: inherit;
+      }
+
+      @include for-tablet {
+        line-height: inherit;
+      }
     }
   }
 
@@ -25,6 +41,11 @@
     flex-direction: column;
     gap: 24px;
     margin-top: 48px;
+
+    @include for-desktop {
+      gap: 10px;
+      margin-top: 20px;
+    }
 
     .rating {
       display: flex;
@@ -46,6 +67,14 @@
     .btn {
       margin-top: 37px;
       max-width: 200px;
+
+      @include for-phone {
+        max-width: 100%;
+      }
+
+      @include for-desktop {
+        margin-top: 20px;
+      }
     }
   }
 }

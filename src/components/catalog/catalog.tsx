@@ -7,26 +7,22 @@ function Catalog() {
     const products: number[] = new Array(9).fill(1);
 
     return (
-        <main className={styles.catalog}>
+        <section className={styles.catalog}>
             <section className={styles.products}>
                 {
                     products.map((_, i) => (
-                        // в качестве ключа взять индекс, т.к. массив не изменяется, и других уникальных значений на данном этапе нет
                         <ProductCard
-                            title='Essence Mascara Lash Princess'
+                            name='Essence Mascara Lash Princess'
                             price='110 $'
                             imgSrc={productImg}
                             id='1'
-                            // useId может быть пригодится
-                            key={i}
+                            key={`Essence Mascara Lash Princess-${i}`}
                         />
                     ))
                 }
             </section>
-            <div className={styles.btnContainer}>
-                <Button ariaLabel='Show more products' className={styles.btn}>Show more</Button>
-            </div>
-        </main>
+            <Button ariaLabel='Show more products' className={styles.btn} onClick={() => {}}>Show more</Button>
+        </section>
     )
 }
 

@@ -1,5 +1,6 @@
 import styles from "./descriptionItem.module.scss";
 import cn from 'classnames';
+import React from 'react';
 
 interface DescriptionItemProps {
     title: string;
@@ -10,7 +11,7 @@ interface DescriptionItemProps {
 function DescriptionItem({ title, children, className }: DescriptionItemProps) {
     return (
         <div className={styles.wrapper}>
-            <h6 className={cn(styles.title, className)}>{title}</h6>
+            <p className={cn(styles.title, className)}>{title}</p>
             {children}
         </div>
     )

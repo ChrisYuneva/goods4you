@@ -1,5 +1,6 @@
-@import "vars";
-@import "fonts";
+@import 'vars';
+@import 'fonts';
+@import 'breakpoints';
 
 body {
   font-family: var(--font-family), sans-serif;
@@ -11,4 +12,16 @@ body {
 
 .container {
   padding: 0 131px;
+
+  @include for-phone {
+    padding: 0 20px;
+  }
+
+  @include for-tablet {
+    padding: 0 40px;
+  }
+
+  @include for-desktop {
+    padding: 0 85px;
+  }
 }

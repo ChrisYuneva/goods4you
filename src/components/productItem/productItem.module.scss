@@ -1,81 +1,113 @@
+@import '../../styles/breakpoints';
+
 .wrapper {
   display: flex;
   height: 100px;
+  justify-content: space-between;
+  width: 100%;
 
-  .description {
+  @include for-phone {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .product {
     display: flex;
-    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    text-decoration: none;
 
-    .product {
-      display: flex;
-      gap: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      .img {
-        width: 100px;
-        height: 57px;
-        object-fit: cover;
-      }
+    @include for-phone {
+      flex-direction: column;
+    }
 
-      .about {
-        display: flex;
-        flex-direction: column;
+    .img {
+      width: 100px;
+      height: 57px;
+      object-fit: cover;
+      padding-top: 19px;
 
-        .name {
-          font-size: 16px;
-          font-weight: 600;
-          line-height: 23px;
-          color: var(--grey);
-          margin: 0;
-        }
-
-        .price {
-          font-size: 18px;
-          font-weight: 400;
-          line-height: 26px;
-          color: var(--grey);
-        }
-      }
-
-      &:hover .name {
-        text-decoration: underline;
+      @include for-phone {
+        height: auto;
+        width: 100%;
+        padding-top: 0;
       }
     }
 
-    .btnContainer {
+    .about {
       display: flex;
-      gap: 10px;
-      margin-left: 45px;
+      flex-direction: column;
+      padding-top: 24px;
 
-      .btnCount {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 23px 18px;
-        height: 48px;
+      .name {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 23px;
+        color: var(--grey);
+        margin: 0;
       }
 
-      .count {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 73px;
-        border-radius: 4px;
-        background-color: var(--light-grey);
-        font-size: 14px;
-        line-height: 19px;
+      .price {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 26px;
+        color: var(--grey);
       }
     }
 
-    .btnDelete {
-      background: transparent;
+    &:hover .name {
+      text-decoration: underline;
+    }
+  }
+
+  .btnContainer {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+    height: 48px;
+
+    .btnCount {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 23px 18px;
+      height: 48px;
+      width: 56px;
+    }
+
+    .count {
+      width: 73px;
       font-size: 14px;
-      font-weight: 400;
-      line-height: 20px;
-      text-align: right;
-      color: var(--placeholder-grey);
-      padding: 0;
-      margin-left: 66px;
+      line-height: 19px;
+
+      @include for-phone {
+        width: 40%;
+      }
+    }
+  }
+
+  .btnDelete {
+    background: transparent;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+    color: var(--placeholder-grey);
+    padding: 0;
+    min-width: 57px;
+    height: 20px;
+    margin-top: 39px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include for-phone {
+      align-self: flex-start;
+      min-width: auto;
+      margin-top: 25px;
     }
   }
 }
+
+//}

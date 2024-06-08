@@ -2,6 +2,7 @@ import styles from "./productDescription.module.scss";
 import DescriptionItem from '../descriptionItem/descriptionItem.tsx';
 import star from '../../assets/icons/star.svg';
 import Button from '../button/button.tsx';
+import {memo} from 'react';
 
 interface ProductDescriptionProps {
     name: string;
@@ -31,7 +32,7 @@ function ProductDescription({ name, id, rating, description, category, discountP
                     <div className={styles.rating}>
                         {
                             ratingArr.map((_, i) => (
-                                <img src={star} alt='' key={i} className={styles.icon}/>
+                                <img src={star} alt={`Rating is ${rating}`} key={i} className={styles.icon}/>
                             ))
                         }
                     </div>
@@ -57,7 +58,7 @@ function ProductDescription({ name, id, rating, description, category, discountP
                 <DescriptionItem title='Description'>
                     <span className={styles.text}>{description}</span>
                 </DescriptionItem>
-                <Button ariaLabel='Add item to basket' className={styles.btn}>
+                <Button ariaLabel='Add item to basket' className={styles.btn} onClick={() => {}}>
                     Add to cart
                 </Button>
             </section>
@@ -66,4 +67,4 @@ function ProductDescription({ name, id, rating, description, category, discountP
     )
 }
 
-export default ProductDescription;
+export default memo(ProductDescription);

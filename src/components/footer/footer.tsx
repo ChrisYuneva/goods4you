@@ -1,12 +1,12 @@
 import styles from './footer.module.scss';
 import Navigation from '../navigation/navigation.tsx';
-import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function Footer() {
-    const navigate = useNavigate();
+
     return (
         <footer className={`${styles.footer} container`}>
-            <span className={styles.logo} onClick={() => navigate('/')}>Goods4you</span>
+            <Link to={'/'} className={styles.logo} aria-label='Go to home page'>Goods4you</Link>
             <Navigation type='footer' />
         </footer>
     )

@@ -1,0 +1,93 @@
+.wrapper {
+  padding: 0;
+  background-color: transparent;
+
+  &:hover {
+    background-color: transparent;
+    scale: 1.05;
+  }
+}
+
+.burger {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 20px;
+  z-index: 55;
+  cursor: pointer;
+
+}
+
+.burger span {
+  height: 1px;
+  width: 100%;
+  transform: scale(1);
+  background-color: var(--white);
+}
+
+.burger::before, .burger::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: var(--white);
+  transition: all .3s ease 0s;
+}
+
+.burger::before {
+  top: 0;
+}
+
+.burger::after {
+  bottom: 0;
+}
+
+.burger.active span {
+  transform: scale(0);
+}
+
+.burger.active::before {
+  top: 50%;
+  transform: rotate(-45deg) translate(0, -50%);
+}
+
+.burger.active::after {
+  bottom: 50%;
+  transform: rotate(45deg) translate(0, 50%);
+}
+
+@keyframes burgerAnimation {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.back {
+  background-color: rgba(21, 14, 25, 0.3);
+  backdrop-filter: blur(10px);
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 50;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 55vw;
+  position: fixed;
+  right: 0;
+  z-index: 50;
+  animation: burgerAnimation .4s;
+  background-color: var(--purple);
+}
