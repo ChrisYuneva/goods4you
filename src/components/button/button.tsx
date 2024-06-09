@@ -4,9 +4,9 @@ import React from 'react';
 
 interface ButtonProps {
     children: React.ReactNode;
-    ariaLabel: string;
-    onClick: () => void;
-    type?: 'submit' | 'reset' | 'button';
+    onClick?: () => void;
+    ariaLabel?: string;
+    type?: 'submit';
     className?: string;
 }
 

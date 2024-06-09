@@ -1,4 +1,4 @@
-@import '../../styles/breakpoints';
+@import '../../app/styles/breakpoints';
 
 .header {
   background-color: var(--purple);
@@ -11,10 +11,6 @@
     align-items: center;
     height: 40px;
     margin-right: 2px;
-
-    //@include for-phone {
-    //  justify-content: s;
-    //}
 
     .nav {
       @include for-phone {
@@ -42,10 +38,6 @@
     color: var(--white);
     font-weight: 700;
     font-size: 30px;
-
-    @include for-phone {
-      font-size: 24px;
-    }
   }
 
   .line {

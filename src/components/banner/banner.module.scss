@@ -1,4 +1,4 @@
-@import '../../styles/breakpoints';
+@import '../../app/styles/breakpoints';
 
 .banner {
   background-color: var(--purple);
@@ -71,50 +71,6 @@
         font-size: 150px;
         bottom: 0;
       }
-    }
-  }
-}
-
-.catalog {
-  display: flex;
-  flex-direction: column;
-  margin: 54px 0 60px;
-
-  .catalogTitle {
-    margin: 0;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 44px;
-    color: var(--grey);
-  }
-}
-
-.faq {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--purple);
-  padding-top: 35px;
-  padding-bottom: 123px;
-
-  .faqContent {
-    width: 880px;
-
-    @include for-phone {
-      width: 100%;
-    }
-
-    @include for-tablet {
-      width: 100%;
-    }
-
-    .faqTitle {
-      margin: 0 0 27px;
-      color: var(--white);
-      font-size: 30px;
-      font-weight: 700;
-      text-transform: uppercase;
-      line-height: 41px;
     }
   }
 }

@@ -1,4 +1,4 @@
-@import '../../styles/breakpoints';
+@import '../../app/styles/breakpoints';
 
 .description {
   width: 100%;
@@ -16,6 +16,11 @@
     justify-content: space-between;
 
     @include for-phone {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @include for-tablet {
       flex-direction: column;
       gap: 10px;
     }

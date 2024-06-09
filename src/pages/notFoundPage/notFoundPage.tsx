@@ -10,7 +10,7 @@ function NotFoundPage() {
             <p className={styles.text}>
                 Please, return to the home page.
             </p>
-            <Link className={styles.link} to={'/'} aria-label='Back to home page'>Back to home</Link>
+            <Link className={styles.link} to={'/'}>Back to home</Link>
         </main>
     )
 }

@@ -1,4 +1,4 @@
-@import '../../styles/breakpoints';
+@import '../../app/styles/breakpoints';
 
 .card {
   display: flex;
@@ -44,6 +44,10 @@
       display: flex;
       flex-direction: column;
       min-width: 185px;
+
+      @include for-tablet {
+        min-width: auto;
+      }
 
       .title {
         font-size: 16px;

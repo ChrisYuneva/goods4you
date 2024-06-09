@@ -1,27 +1,17 @@
 import Header from '../header/header.tsx';
 import Footer from '../footer/footer.tsx';
-import {Outlet, useLocation} from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 import styles from './layout.module.scss';
-import {useEffect} from 'react';
-
-function ScrollToTop() {
-    const { pathname } = useLocation();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
-
-    return null;
-}
+import ScrollToTop from '../scrollToTop/scrollToTop.tsx';
 
 function Layout() {
     return (
         <div className={styles.outerContainer}>
             <ScrollToTop />
             <Header />
-            <div className={styles.page}>
+            <main className={styles.page}>
                <Outlet />
-            </div>
+            </main>
             <Footer />
         </div>
     )

@@ -1,16 +1,22 @@
 import styles from "./searchForm.module.scss";
 import Input from '../input/input.tsx';
 import Button from '../button/button.tsx';
-import {useState} from 'react';
+import React, {useState} from 'react';
 
 function SearchForm() {
     const [value, setValue] = useState('');
+
+    function onSubmitHandler (e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        setValue('');
+    }
+
     return (
-        <form className={styles.form} action='' onSubmit={e => {
-            e.preventDefault();
-            console.log(value);
-            setValue('');
-        }}>
+        <form
+            className={styles.form}
+            action=''
+            onSubmit={onSubmitHandler}
+        >
             <Input
                 id='search'
                 placeholder='Search by title'
@@ -18,7 +24,6 @@ function SearchForm() {
                 onChange={e => setValue(e.target.value)}
             />
             <Button
-                ariaLabel='Find a product'
                 type='submit'
                 className={styles.btn}
             >

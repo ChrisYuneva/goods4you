@@ -17,31 +17,31 @@
   height: 20px;
   z-index: 55;
   cursor: pointer;
+  will-change: transform;
 
-}
+  span {
+    height: 1px;
+    width: 100%;
+    transform: scale(1);
+    background-color: var(--white);
+  }
 
-.burger span {
-  height: 1px;
-  width: 100%;
-  transform: scale(1);
-  background-color: var(--white);
-}
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: var(--white);
+    transition: all .3s ease 0s;
+  }
 
-.burger::before, .burger::after {
-  content: '';
-  position: absolute;
-  height: 1px;
-  width: 100%;
-  background-color: var(--white);
-  transition: all .3s ease 0s;
-}
+  &::before {
+    top: 0;
+  }
 
-.burger::before {
-  top: 0;
-}
-
-.burger::after {
-  bottom: 0;
+  &::after {
+      bottom: 0;
+  }
 }
 
 .burger.active span {
@@ -77,17 +77,18 @@
   transform: translate(-50%, -50%);
   position: fixed;
   z-index: 50;
-}
 
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 55vw;
-  position: fixed;
-  right: 0;
-  z-index: 50;
-  animation: burgerAnimation .4s;
-  background-color: var(--purple);
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 55vw;
+    position: fixed;
+    right: 0;
+    z-index: 50;
+    animation: burgerAnimation .4s;
+    background-color: var(--purple);
+    will-change: transform;
+  }
 }

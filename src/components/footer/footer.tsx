@@ -6,7 +6,7 @@ function Footer() {
 
     return (
         <footer className={`${styles.footer} container`}>
-            <Link to={'/'} className={styles.logo} aria-label='Go to home page'>Goods4you</Link>
+            <Link to={'/'} className={styles.logo}>Goods4you</Link>
             <Navigation type='footer' />
         </footer>
     )

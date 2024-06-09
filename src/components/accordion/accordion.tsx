@@ -1,7 +1,7 @@
 import cross from '../../assets/icons/cross.svg';
 import styles from './accordion.module.scss';
 import cn from 'classnames';
-import {useRef, useState} from 'react';
+import React, {useState} from 'react';
 
 interface AccordionProps {
     title: string;
@@ -11,19 +11,33 @@ interface AccordionProps {
 
 function Accordion({ title, text, isLast }: AccordionProps) {
     const [isVisible, setVisible] = useState(false);
-    const textRef = useRef<HTMLParagraphElement>(null);
 
     function showContent() {
         setVisible(prev => !prev);
     }
 
+    function onKeyPress(e: React.KeyboardEvent<HTMLDivElement>)  {
+        if(e.key === 'Enter') {
+            showContent();
+        }
+    }
+
     return (
-        <div aria-controls='menu' tabIndex={0} role='button' aria-expanded={isVisible} aria-label='Disclose answer' className={cn(styles.accordion, {[styles.last]: isLast})} onClick={showContent}>
+        <div
+            className={cn(styles.accordion, {[styles.last]: isLast})}
+            aria-controls='accordion'
+            tabIndex={0}
+            role='button'
+            aria-expanded={isVisible}
+            aria-label={title}
+            onClick={showContent}
+            onKeyDown={onKeyPress}
+        >
             <div className={styles.content}>
                 <span className={styles.title}>{title}</span>
                 <img src={cross} alt='' className={cn(styles.icon, {[styles.rotate]: isVisible})} />
             </div>
-            <p id='menu' className={cn(styles.text, {[styles.visibleText]: isVisible})} ref={textRef} tabIndex={0}>
+            <p id='accordion' className={cn(styles.text, {[styles.visibleText]: isVisible})} tabIndex={0}>
                 {text}
             </p>
         </div>

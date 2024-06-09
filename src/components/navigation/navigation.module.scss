@@ -1,4 +1,4 @@
-@import '../../styles/breakpoints';
+@import '../../app/styles/breakpoints';
 
 .wrapper {
 
@@ -12,6 +12,10 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 20px;
+    }
+
+    @include for-tablet {
+      gap: 23px;
     }
 
     .listItem {
@@ -39,8 +43,8 @@
 
       .counter {
         position: absolute;
-        bottom: -5px;
-        right: -3px;
+        bottom: -4px;
+        right: -1px;
         display: flex;
         justify-content: center;
         align-items: center;

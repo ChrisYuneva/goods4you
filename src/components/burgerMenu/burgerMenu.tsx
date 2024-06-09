@@ -5,7 +5,7 @@ import styles from './burgerMenu.module.scss';
 function BurgerMenu() {
     const [openMenu, setOpenMenu] = useState(false);
 
-        function openMenuHandler() {
+    function openMenuHandler() {
         setOpenMenu((prev) => !prev);
     }
 
@@ -15,17 +15,27 @@ function BurgerMenu() {
 
     return (
         <>
-            <div tabIndex={0} role='button' className={styles.burger_wrapper} onClick={openMenuHandler}>
+            <div
+                className={styles.burger_wrapper}
+                onClick={openMenuHandler}
+                tabIndex={0}
+                role='button'
+                aria-expanded={openMenu}
+                aria-label='Open menu'
+                aria-controls='menu'
+            >
                 <label className={openMenu ? `${styles.burger} ${styles.active}` : styles.burger}>
                     <span></span>
                 </label>
             </div>
             {
-                openMenu && <div className={styles.back}>
-                    <div className={styles.menu} role='listbox'>
-                        <Navigation type={'header'} openMenuHandler={openMenuHandler} />
+                openMenu && (
+                    <div className={styles.back}>
+                        <div className={styles.menu} id='menu'>
+                            <Navigation type={'header'} openMenuHandler={openMenuHandler}/>
+                        </div>
                     </div>
-                </div>
+                )
             }
         </>
     );

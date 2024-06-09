@@ -19,8 +19,9 @@ interface ProductDescriptionProps {
 
 function ProductDescription({ name, id, rating, description, category, discountPercentage, discountPrice, price, stock, brand }: ProductDescriptionProps) {
     const ratingArr: number[] = new Array(rating).fill(1);
+
     return (
-        <section className={styles.description}>
+        <section className={styles.description} tabIndex={0}>
             <div className={styles.head}>
                 <h1 className={styles.name}>{name}</h1>
                 <DescriptionItem title="SKU ID">
@@ -32,7 +33,7 @@ function ProductDescription({ name, id, rating, description, category, discountP
                     <div className={styles.rating}>
                         {
                             ratingArr.map((_, i) => (
-                                <img src={star} alt={`Rating is ${rating}`} key={i} className={styles.icon}/>
+                                <img src={star} alt='' key={`Rating-${i}`} className={styles.icon}/>
                             ))
                         }
                     </div>
@@ -58,11 +59,10 @@ function ProductDescription({ name, id, rating, description, category, discountP
                 <DescriptionItem title='Description'>
                     <span className={styles.text}>{description}</span>
                 </DescriptionItem>
-                <Button ariaLabel='Add item to basket' className={styles.btn} onClick={() => {}}>
+                <Button className={styles.btn} onClick={() => {}}>
                     Add to cart
                 </Button>
             </section>
-
         </section>
     )
 }

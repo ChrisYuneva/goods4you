@@ -18,14 +18,14 @@ function ProductItem({ id, imgSrc, name, price, quantity, counterChange }: Produ
             <Link to={`/product/${id}`} className={styles.product} aria-label='Go to product page'>
                 <img src={imgSrc} alt={name} className={styles.img}/>
                 <div className={styles.about}>
-                    <h2 className={styles.name}>{name}</h2>
+                    <p className={styles.name}>{name}</p>
                     <span className={styles.price}>{price}</span>
                 </div>
             </Link>
             <div className={styles.btnContainer}>
-                <Counter count={quantity} counterChange={counterChange} classNameBtn={styles.btnCount} classNameCount={styles.count}/>
+                <Counter count={quantity} counterChange={counterChange} />
             </div>
-            <Button ariaLabel='Remove an item from the basket' className={styles.btnDelete} onClick={() => {}}>Delete</Button>
+            <Button className={styles.btnDelete} onClick={() => {}}>Delete</Button>
         </article>
     )
 }

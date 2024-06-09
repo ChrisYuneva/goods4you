@@ -7,14 +7,14 @@ import DescriptionItem from '../../components/descriptionItem/descriptionItem.ts
 function CartPage() {
     return (
         <section className={cn(styles.wrapper, 'container')}>
-            <h1 className={styles.title}>My cart</h1>
-            <main className={styles.content}>
+            <h1 className={styles.title} tabIndex={0}>My cart</h1>
+            <section className={styles.content}>
                 <section className={styles.products}>
                     <ProductItem id='1' imgSrc={product} name='Essence Mascara Lash Princess' price='110 $' quantity={1} counterChange={() => {}}/>
                     <ProductItem id='1' imgSrc={product} name='Essence Mascara Lash Princess' price='110 $' quantity={1} counterChange={() => {}}/>
                     <ProductItem id='1' imgSrc={product} name='Essence Mascara Lash Princess' price='110 $' quantity={1} counterChange={() => {}}/>
                 </section>
-                <section className={styles.total}>
+                <section className={styles.total} tabIndex={0}>
                     <DescriptionItem title='Total count:' className={styles.totalCount}>
                         <span className={styles.count}>3</span>
                     </DescriptionItem>
@@ -25,7 +25,7 @@ function CartPage() {
                         <span className={styles.discount}>590$</span>
                     </DescriptionItem>
                 </section>
-            </main>
+            </section>
         </section>
     )
 }

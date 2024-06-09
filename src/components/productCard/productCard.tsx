@@ -36,13 +36,22 @@ function ProductCard({ id, name, price, imgSrc }: ProductCardProps) {
     }
 
     return (
-        <article className={styles.card} onMouseOver={() => handleHover(true)} onMouseLeave={() => handleHover(false)}>
-            <div className={cn(styles.imgWrapper, { [styles.imgWrapperHover]: isHover })} onClick={() => redirectToProduct(id)}>
+        <article
+            className={styles.card}
+            onMouseOver={() => handleHover(true)}
+            onMouseLeave={() => handleHover(false)}
+            tabIndex={0}
+        >
+            <div
+                className={cn(styles.imgWrapper, { [styles.imgWrapperHover]: isHover })}
+                onClick={() => redirectToProduct(id)}
+                aria-label='Go to product page'
+            >
                 <img src={imgSrc} alt={`${name}`} className={styles.img} />
             </div>
             <section className={styles.product}>
                 <section className={styles.description} onClick={() => redirectToProduct(id)}>
-                    <h6 className={cn(styles.title, {[styles.titleHover]: isHover, [styles.hiddenTitle]: count>0})}>{name}</h6>
+                    <p className={cn(styles.title, {[styles.titleHover]: isHover, [styles.hiddenTitle]: count>0})}>{name}</p>
                     <span className={styles.price}>{price}</span>
                 </section>
                 {

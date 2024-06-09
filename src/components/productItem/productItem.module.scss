@@ -1,14 +1,23 @@
-@import '../../styles/breakpoints';
+@import '../../app/styles/breakpoints';
 
 .wrapper {
   display: flex;
   height: 100px;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 
   @include for-phone {
     height: auto;
     flex-direction: column;
+  }
+
+  @include for-tablet {
+    height: auto;
+    flex-direction: column;
+    align-items: normal;
+    gap: 15px;
+    margin-bottom: 30px;
   }
 
   .product {
@@ -25,7 +34,6 @@
       width: 100px;
       height: 57px;
       object-fit: cover;
-      padding-top: 19px;
 
       @include for-phone {
         height: auto;
@@ -37,7 +45,6 @@
     .about {
       display: flex;
       flex-direction: column;
-      padding-top: 24px;
 
       .name {
         font-size: 16px;
@@ -62,27 +69,16 @@
 
   .btnContainer {
     display: flex;
-    gap: 10px;
-    margin-top: 24px;
-    height: 48px;
+    margin-left: 30px;
 
-    .btnCount {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 23px 18px;
-      height: 48px;
-      width: 56px;
+    @include for-phone {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 10px;
     }
 
-    .count {
-      width: 73px;
-      font-size: 14px;
-      line-height: 19px;
-
-      @include for-phone {
-        width: 40%;
-      }
+    @include for-tablet {
+      margin-left: 0;
     }
   }
 
@@ -96,7 +92,6 @@
     padding: 0;
     min-width: 57px;
     height: 20px;
-    margin-top: 39px;
 
     &:hover {
       text-decoration: underline;
@@ -109,5 +104,3 @@
     }
   }
 }
-
-//}
