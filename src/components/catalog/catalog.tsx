@@ -1,12 +1,14 @@
 import styles from './catalog.module.scss';
 import ProductCard from '../productCard/productCard.tsx';
-import productImg from '../../assets/images/product.avif';
 import Button from '../button/button.tsx';
 import SearchForm from '../searchForm/searchForm.tsx';
 import cn from 'classnames';
+import {useGetSearchProductsQuery} from '../../app/store/services/products.ts';
+import {useState} from 'react';
 
 function Catalog() {
-    const products: number[] = new Array(9).fill(1);
+    const [skip, setSkip] = useState(0);
+    const {data} = useGetSearchProductsQuery({name: '', limit: 9, skip: skip});
 
     return (
         <section className={cn(styles.wrapper, 'container')} id='catalog'>
@@ -15,20 +17,20 @@ function Catalog() {
                 <SearchForm/>
                 <section className={styles.products}>
                     {
-                        products.map((_, i) => (
+                        data?.products.map((product) => (
                             <ProductCard
-                                name='Essence Mascara Lash Princess'
-                                price='110 $'
-                                imgSrc={productImg}
-                                id='1'
-                                key={`Essence Mascara Lash Princess-${i}`}
+                                name={product.title}
+                                price={product.price}
+                                imgSrc={product.thumbnail}
+                                id={product.id}
+                                key={product.id}
                             />
                         ))
                     }
                 </section>
                 <Button
                     className={styles.btn}
-                    onClick={() => {}}
+                    onClick={() => {setSkip(prev => prev + 9)}}
                 >
                     Show more
                 </Button>

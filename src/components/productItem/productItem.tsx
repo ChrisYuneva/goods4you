@@ -4,10 +4,10 @@ import {Link} from 'react-router-dom';
 import Counter from '../counter/counter.tsx';
 
 interface ProductItemProps {
-    id: string;
+    id: number;
     imgSrc: string;
     name: string;
-    price: string;
+    price: number;
     quantity: number;
     counterChange: (type: 'plus'| 'minus') => void;
 }
@@ -19,7 +19,7 @@ function ProductItem({ id, imgSrc, name, price, quantity, counterChange }: Produ
                 <img src={imgSrc} alt={name} className={styles.img}/>
                 <div className={styles.about}>
                     <p className={styles.name}>{name}</p>
-                    <span className={styles.price}>{price}</span>
+                    <span className={styles.price}>{price}&#36;</span>
                 </div>
             </Link>
             <div className={styles.btnContainer}>

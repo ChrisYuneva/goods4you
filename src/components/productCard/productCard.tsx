@@ -7,9 +7,9 @@ import Button from '../button/button.tsx';
 import basket from '../../assets/icons/basket.svg';
 
 interface ProductCardProps {
-    id: string;
+    id: number;
     name: string;
-    price: string;
+    price: number;
     imgSrc: string;
 }
 
@@ -44,15 +44,15 @@ function ProductCard({ id, name, price, imgSrc }: ProductCardProps) {
         >
             <div
                 className={cn(styles.imgWrapper, { [styles.imgWrapperHover]: isHover })}
-                onClick={() => redirectToProduct(id)}
+                onClick={() => redirectToProduct(`${id}`)}
                 aria-label='Go to product page'
             >
                 <img src={imgSrc} alt={`${name}`} className={styles.img} />
             </div>
             <section className={styles.product}>
-                <section className={styles.description} onClick={() => redirectToProduct(id)}>
+                <section className={styles.description} onClick={() => redirectToProduct(`${id}`)}>
                     <p className={cn(styles.title, {[styles.titleHover]: isHover, [styles.hiddenTitle]: count>0})}>{name}</p>
-                    <span className={styles.price}>{price}</span>
+                    <span className={styles.price}>{price}&#36;</span>
                 </section>
                 {
                     count === 0

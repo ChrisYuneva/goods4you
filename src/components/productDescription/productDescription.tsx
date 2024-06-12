@@ -6,26 +6,26 @@ import {memo} from 'react';
 
 interface ProductDescriptionProps {
     name: string;
-    id: string;
+    skuId: string;
     rating: number;
-    price: string;
-    discountPercentage: string;
-    discountPrice: string;
-    stock: string;
+    price: number;
+    discountPercentage: number;
+    stock: number;
     brand: string;
     category: string;
     description: string;
 }
 
-function ProductDescription({ name, id, rating, description, category, discountPercentage, discountPrice, price, stock, brand }: ProductDescriptionProps) {
-    const ratingArr: number[] = new Array(rating).fill(1);
+function ProductDescription({ name, skuId, rating, description, category, discountPercentage, price, stock, brand }: ProductDescriptionProps) {
+    const ratingArr: number[] = new Array(Math.round(rating)).fill(1);
+    const discountPrice = (price - (price*(discountPercentage/100))).toFixed(2);
 
     return (
         <section className={styles.description} tabIndex={0}>
             <div className={styles.head}>
                 <h1 className={styles.name}>{name}</h1>
                 <DescriptionItem title="SKU ID">
-                    <span className={styles.text}>{id}</span>
+                    <span className={styles.text}>{skuId}</span>
                 </DescriptionItem>
             </div>
             <section className={styles.items}>
@@ -39,10 +39,10 @@ function ProductDescription({ name, id, rating, description, category, discountP
                     </div>
                 </DescriptionItem>
                 <DescriptionItem title='Base price'>
-                    <span className={styles.text}>{price}</span>
+                    <span className={styles.text}>{price}&#36;</span>
                 </DescriptionItem>
                 <DescriptionItem title='Discount percentage'>
-                    <span className={styles.text}>{discountPercentage}</span>
+                    <span className={styles.text}>{discountPercentage}&#37;</span>
                 </DescriptionItem>
                 <DescriptionItem title='Discount price'>
                     <span className={styles.text}>{discountPrice}</span>

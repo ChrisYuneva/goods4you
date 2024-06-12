@@ -4,10 +4,11 @@ import {Link} from 'react-router-dom';
 
 interface NavigationProps {
     type: 'header' | 'footer';
+    totalBasket: number;
     openMenuHandler?: () => void;
 }
 
-function Navigation({ type, openMenuHandler }: NavigationProps) {
+function Navigation({ type, totalBasket, openMenuHandler }: NavigationProps) {
     return (
         <nav className={styles.wrapper}>
             <ul className={styles.list}>
@@ -23,7 +24,10 @@ function Navigation({ type, openMenuHandler }: NavigationProps) {
                             <Link to="/cart" className={styles.listItem} id={styles.basket} onClick={openMenuHandler}>
                                 Cart
                                 <img src={basket} alt='' className={styles.icon}/>
-                                <span className={styles.counter}>1</span>
+                                {
+                                    totalBasket && <span className={styles.counter}>{totalBasket}</span>
+                                }
+
                             </Link>
                         </li>
                     )
