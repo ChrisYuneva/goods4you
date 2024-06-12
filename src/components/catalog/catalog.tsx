@@ -4,7 +4,7 @@ import Button from '../button/button.tsx';
 import SearchForm from '../searchForm/searchForm.tsx';
 import cn from 'classnames';
 import {useGetSearchProductsQuery} from '../../app/store/services/products.ts';
-import {useAppDispatch, useAppSelector} from '../../app/store/hooks/hooks.ts';
+import {useAppDispatch, useAppSelector} from '../../app/store/hooks/useRedux.ts';
 import {searchProductsParamsSlice} from '../../app/store/slices/searchProductParamsSlice.ts';
 
 const { changeSearchProductsParams } = searchProductsParamsSlice.actions;
