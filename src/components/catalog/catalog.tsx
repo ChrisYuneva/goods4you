@@ -4,11 +4,15 @@ import Button from '../button/button.tsx';
 import SearchForm from '../searchForm/searchForm.tsx';
 import cn from 'classnames';
 import {useGetSearchProductsQuery} from '../../app/store/services/products.ts';
-import {useState} from 'react';
+import {useAppDispatch, useAppSelector} from '../../app/store/hooks/hooks.ts';
+import {searchProductsParamsSlice} from '../../app/store/slices/searchProductParamsSlice.ts';
+
+const { changeSearchProductsParams } = searchProductsParamsSlice.actions;
 
 function Catalog() {
-    const [skip, setSkip] = useState(0);
-    const {data} = useGetSearchProductsQuery({name: '', limit: 9, skip: skip});
+    const {name, limit, skip} = useAppSelector(state => state.searchProductsParams);
+    const {data} = useGetSearchProductsQuery({name, limit, skip});
+    const dispatch = useAppDispatch();
 
     return (
         <section className={cn(styles.wrapper, 'container')} id='catalog'>
@@ -17,23 +21,27 @@ function Catalog() {
                 <SearchForm/>
                 <section className={styles.products}>
                     {
-                        data?.products.map((product) => (
+                        data?.products.map((product, i) => (
                             <ProductCard
                                 name={product.title}
                                 price={product.price}
                                 imgSrc={product.thumbnail}
                                 id={product.id}
-                                key={product.id}
+                                key={`${product.id}-${i}`}
                             />
                         ))
                     }
                 </section>
-                <Button
-                    className={styles.btn}
-                    onClick={() => {setSkip(prev => prev + 9)}}
-                >
-                    Show more
-                </Button>
+                {
+                    data && (skip+9<data?.total) && (
+                        <Button
+                            className={styles.btn}
+                            onClick={() => {dispatch(changeSearchProductsParams({name, limit, skip: skip+9}))}}
+                        >
+                            Show more
+                        </Button>
+                    )
+                }
             </section>
         </section>
     )

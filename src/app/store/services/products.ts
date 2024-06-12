@@ -1,11 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {Product, Products} from '../types.ts';
-
-interface GetSearchProductsParams {
-    name: string,
-    limit: number,
-    skip: number,
-}
+import {GetSearchProductsParams, Product, Products} from '../types.ts';
 
 export const productsApi = createApi({
     reducerPath: 'productsApi',
@@ -15,22 +9,25 @@ export const productsApi = createApi({
             query: (id: string) => `products/${id}`,
         }),
         getSearchProducts: builder.query<Products, GetSearchProductsParams>({
-            query: ({name, limit, skip}) => `products/search?q=${name}&limit=${limit}&skip=${skip}`,
-            serializeQueryArgs: ({ endpointName }) => {
-                return endpointName;
+            query: ({name, limit, skip}) => (
+                {
+                    url: '/products/search?',
+                    params: {
+                        q: name,
+                        limit: limit,
+                        skip: skip
+                    }
+                }
+            ),
+            serializeQueryArgs: ({ endpointName, queryArgs }) => {
+                return endpointName + queryArgs.name;
             },
             merge: (currentCache, newItems) => {
-                // console.log(currentCache, newItems);
-                //     currentCache.products = [...currentCache.products, ...newItems.products],
-                    currentCache.products.push(...newItems.products);
-                    // currentCache.skip = newItems.skip;
-                    // currentCache.limit = newItems.limit;
-
-                // currentCache.products.push(...newItems.products);
+                currentCache.products.push(...newItems.products);
             },
             forceRefetch({ currentArg, previousArg }) {
                 return currentArg !== previousArg;
-            }
+            },
         }),
     }),
 })

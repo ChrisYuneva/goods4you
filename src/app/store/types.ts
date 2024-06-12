@@ -78,3 +78,9 @@ export interface Products {
     skip: number,
     limit: number
 }
+
+export interface GetSearchProductsParams {
+    name: string,
+    limit: number,
+    skip: number,
+}

@@ -5,6 +5,7 @@ import Counter from '../counter/counter.tsx';
 import {useNavigate} from 'react-router-dom';
 import Button from '../button/button.tsx';
 import basket from '../../assets/icons/basket.svg';
+import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId.ts';
 
 interface ProductCardProps {
     id: number;
@@ -16,20 +17,31 @@ interface ProductCardProps {
 function ProductCard({ id, name, price, imgSrc }: ProductCardProps) {
     const navigate = useNavigate();
     const [isHover, setIsHover] = useState(false);
-    const [count, setCount] = useState(0);
+    const {data} = useGetCartByUserIdQuery('');
 
     function handleHover(hovered: boolean) {
         setIsHover(hovered);
     }
 
-    function counterChange(type: 'plus'| 'minus') {
-        if(type === 'plus') {
-            setCount(prev => prev + 1);
+    function getCountProduct() {
+        if(data) {
+            const {products} = data.carts[0];
+            return products.find((product) => product.id === id)?.quantity ?? 0;
         }
-        else {
-            setCount(prev => prev - 1);
-        }
+
+        return 0;
     }
+
+    const count = getCountProduct();
+
+    // function counterChange(type: 'plus'| 'minus') {
+    //     if(type === 'plus') {
+    //         setCount(prev => prev + 1);
+    //     }
+    //     else {
+    //         setCount(prev => prev - 1);
+    //     }
+    // }
 
     function redirectToProduct(id: string) {
         navigate(`/product/${id}`);
@@ -59,14 +71,14 @@ function ProductCard({ id, name, price, imgSrc }: ProductCardProps) {
                         ? (
                             <Button
                                 ariaLabel='Add item to basket'
-                                onClick={() => counterChange('plus')}
+                                // onClick={() => counterChange('plus')}
                                 className={styles.btn}
                             >
                                 <img src={basket} alt='' className={styles.icon}/>
                             </Button>
                         )
                         : (
-                            <Counter count={count} counterChange={counterChange} />
+                            <Counter count={count} counterChange={() => {}} />
                         )
                 }
             </section>

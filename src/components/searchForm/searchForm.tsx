@@ -1,14 +1,21 @@
 import styles from "./searchForm.module.scss";
 import Input from '../input/input.tsx';
 import Button from '../button/button.tsx';
-import React, {useState} from 'react';
+import React from 'react';
+import {useAppDispatch, useAppSelector} from '../../app/store/hooks/hooks.ts';
+import {searchProductsParamsSlice} from '../../app/store/slices/searchProductParamsSlice.ts';
+import {useGetSearchProductsQuery} from '../../app/store/services/products.ts';
+
+const { changeSearchProductsParams } = searchProductsParamsSlice.actions;
 
 function SearchForm() {
-    const [value, setValue] = useState('');
+    const {name, ...params} = useAppSelector(state => state.searchProductsParams);
+    const dispatch = useAppDispatch();
+    const {refetch} = useGetSearchProductsQuery({name, ...params});
 
     function onSubmitHandler (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        setValue('');
+        refetch();
     }
 
     return (
@@ -20,8 +27,12 @@ function SearchForm() {
             <Input
                 id='search'
                 placeholder='Search by title'
-                value={value}
-                onChange={e => setValue(e.target.value)}
+                value={name}
+                onChange={e =>  dispatch(changeSearchProductsParams({
+                    ...params,
+                    name: e.target.value,
+                    skip: 0
+                }))}
             />
             <Button
                 type='submit'
