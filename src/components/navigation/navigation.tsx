@@ -1,14 +1,16 @@
 import styles from './navigation.module.scss';
 import basket from '../../assets/icons/basket.svg'
 import {Link} from 'react-router-dom';
+import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId.ts';
 
 interface NavigationProps {
     type: 'header' | 'footer';
-    totalBasket: number;
     openMenuHandler?: () => void;
 }
 
-function Navigation({ type, totalBasket, openMenuHandler }: NavigationProps) {
+function Navigation({ type, openMenuHandler }: NavigationProps) {
+    const {data} = useGetCartByUserIdQuery('');
+
     return (
         <nav className={styles.wrapper}>
             <ul className={styles.list}>
@@ -25,9 +27,8 @@ function Navigation({ type, totalBasket, openMenuHandler }: NavigationProps) {
                                 Cart
                                 <img src={basket} alt='' className={styles.icon}/>
                                 {
-                                    totalBasket && <span className={styles.counter}>{totalBasket}</span>
+                                    data?.carts.length && <span className={styles.counter}>{data?.carts[0].totalQuantity ?? 0}</span>
                                 }
-
                             </Link>
                         </li>
                     )

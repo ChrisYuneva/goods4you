@@ -25,9 +25,11 @@
     gap: 10px;
     cursor: pointer;
     text-decoration: none;
+    width: 362px;
 
     @include for-phone {
       flex-direction: column;
+      width: 100%;
     }
 
     .img {
@@ -69,16 +71,10 @@
 
   .btnContainer {
     display: flex;
-    margin-left: 30px;
 
     @include for-phone {
       width: 100%;
-      margin-left: 0;
       margin-top: 10px;
-    }
-
-    @include for-tablet {
-      margin-left: 0;
     }
   }
 

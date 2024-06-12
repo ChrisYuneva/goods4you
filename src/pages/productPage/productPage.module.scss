@@ -42,7 +42,7 @@
     .slider {
       display: flex;
       flex-direction: column;
-      max-width: 520px;
+      width: 520px;
 
       @include for-phone {
         max-width: 100%;
@@ -58,7 +58,21 @@
       }
 
       .mainImg {
-        width: 100%;
+        width: 520px;
+        max-height: 461px;
+        object-fit: contain;
+
+        @include for-phone {
+          width: auto;
+        }
+
+        @include for-tablet {
+          width: auto;
+        }
+
+        @include for-desktop {
+          width: auto;
+        }
       }
 
       .items {
@@ -85,6 +99,7 @@
           border-radius: 4px;
           box-sizing: border-box;
           cursor: pointer;
+          object-fit: contain;
         }
 
         .activeImg {
