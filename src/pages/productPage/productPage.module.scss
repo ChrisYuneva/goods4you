@@ -59,11 +59,12 @@
 
       .mainImg {
         width: 520px;
-        max-height: 461px;
+        height: 461px;
         object-fit: contain;
 
         @include for-phone {
           width: auto;
+          height: 261px;
         }
 
         @include for-tablet {
@@ -71,7 +72,7 @@
         }
 
         @include for-desktop {
-          width: auto;
+          width: 100%;
         }
       }
 

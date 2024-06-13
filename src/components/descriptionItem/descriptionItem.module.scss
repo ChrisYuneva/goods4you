@@ -2,16 +2,7 @@
 
 .wrapper {
   display: flex;
-  align-items: center;
   gap: 10px;
-
-  @include for-phone {
-    align-items: normal;
-  }
-
-  @include for-tablet {
-    align-items: normal;
-  }
 
   .title {
     color: var(--placeholder-grey);
