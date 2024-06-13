@@ -6,14 +6,23 @@ interface InputProps {
     placeholder: string;
     value: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    disabled?: boolean;
 }
 
-function Input({ id, placeholder, value, onChange }: InputProps) {
+function Input({ id, placeholder, value, onChange, disabled }: InputProps) {
 
     return (
         <>
             <label htmlFor={id} className={styles.srOnly}>{placeholder}</label>
-            <input id={id} type="text" placeholder={placeholder} className={styles.input} value={value} onChange={onChange} />
+            <input
+                id={id}
+                type="text"
+                placeholder={placeholder}
+                className={styles.input}
+                value={value}
+                disabled={disabled}
+                onChange={onChange}
+            />
         </>
     )
 }

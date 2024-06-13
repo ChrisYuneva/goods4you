@@ -5,7 +5,7 @@ import Counter from '../counter/counter.tsx';
 import {useNavigate} from 'react-router-dom';
 import Button from '../button/button.tsx';
 import basket from '../../assets/icons/basket.svg';
-import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId.ts';
+import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserId.ts';
 
 interface ProductCardProps {
     id: number;

@@ -1,7 +1,7 @@
 import styles from './navigation.module.scss';
 import basket from '../../assets/icons/basket.svg'
 import {Link} from 'react-router-dom';
-import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId.ts';
+import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserId.ts';
 
 interface NavigationProps {
     type: 'header' | 'footer';

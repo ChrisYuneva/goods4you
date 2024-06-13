@@ -1,7 +1,7 @@
 interface Dimension {
     width: number,
-    height: 14.43,
-    depth: 28.01
+    height: number,
+    depth: number
 }
 
 interface Review {
@@ -44,43 +44,9 @@ export interface Product {
     images: string[]
 }
 
-interface ProductCart {
-    id: number,
-    title: string,
-    price: number,
-    quantity: number,
-    total: number,
-    discountPercentage: number,
-    discountedTotal: number,
-    thumbnail: string
-}
-
-interface Cart {
-    id: number,
-    products: ProductCart[],
-    total: number,
-    discountedTotal: number,
-    userId: number,
-    totalProducts: number,
-    totalQuantity: number
-}
-
-export interface CartInfo {
-    carts: Cart[],
-    total: number,
-    skip: number,
-    limit: number
-}
-
 export interface Products {
     products: Product[],
     total: number,
     skip: number,
     limit: number
-}
-
-export interface GetSearchProductsParams {
-    name: string,
-    limit: number,
-    skip: number,
 }

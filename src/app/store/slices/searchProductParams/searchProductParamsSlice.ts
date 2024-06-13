@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import {GetSearchProductsParams} from '../types.ts';
+import {GetSearchProductsParams} from './types';
 
 const initialState: GetSearchProductsParams = {
     name: '',

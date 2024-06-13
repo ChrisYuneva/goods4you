@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {GetSearchProductsParams, Product, Products} from '../types.ts';
+import {Product, Products} from './types';
+import {GetSearchProductsParams} from '../../slices/searchProductParams/types';
 
 export const productsApi = createApi({
     reducerPath: 'productsApi',
@@ -23,7 +24,9 @@ export const productsApi = createApi({
                 return endpointName + queryArgs.name;
             },
             merge: (currentCache, newItems) => {
-                currentCache.products.push(...newItems.products);
+                const existingIds = new Set(currentCache.products.map(product => product.id));
+                const newUniqueProducts = newItems.products.filter(product => !existingIds.has(product.id));
+                currentCache.products.push(...newUniqueProducts);
             },
             forceRefetch({ currentArg, previousArg }) {
                 return currentArg !== previousArg;

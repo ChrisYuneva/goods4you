@@ -2,21 +2,21 @@ import styles from './cartPage.module.scss';
 import ProductItem from '../../components/productItem/productItem.tsx';
 import cn from 'classnames';
 import DescriptionItem from '../../components/descriptionItem/descriptionItem.tsx';
-import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId.ts';
-import Loader from '../../components/loader/loader.tsx';
+import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserId.ts';
+import {getErrorMsg} from '../../app/utils';
+import ErrorMsg from '../../components/errorMsg/errorMsg.tsx';
+import SkeletonCartPage from '../../components/skeletons/ skeletonCartPage/ skeletonCartPage.tsx';
 
 function CartPage() {
-    const {data, isLoading} = useGetCartByUserIdQuery('');
+    const {data, isLoading, error, isError} = useGetCartByUserIdQuery('');
+
     return (
         <section className={cn(styles.wrapper, 'container')}>
-            {
-                isLoading && <Loader/>
-            }
-            {
-                !isLoading && (
-                    <>
-                        <h1 className={styles.title} tabIndex={0}>My cart</h1>
-                        <section className={styles.content}>
+            <h1 className={styles.title} tabIndex={0}>My cart</h1>
+            <section className={styles.content}>
+                {
+                    !isLoading && !isError && (
+                        <>
                             <section className={styles.products}>
                                 {
                                     data?.carts[0].products.map((product) => (
@@ -40,13 +40,21 @@ function CartPage() {
                                 <DescriptionItem title="Total price:" className={styles.totalPrice}>
                                     <span className={styles.price}>{data?.carts[0].total}&#36;</span>
                                 </DescriptionItem>
-                                <DescriptionItem title="Total price with discount:" className={styles.totalDiscount}>
-                                    <span className={styles.discount}>{data?.carts[0].discountedTotal}&#36;</span>
+                                <DescriptionItem title="Total price with discount:"
+                                                 className={styles.totalDiscount}>
+                                                <span
+                                                    className={styles.discount}>{data?.carts[0].discountedTotal}&#36;</span>
                                 </DescriptionItem>
                             </section>
-                        </section>
-                    </>
-                )
+                        </>
+                    )
+                }
+                {
+                    isLoading && <SkeletonCartPage/>
+                }
+            </section>
+            {
+                isError && <ErrorMsg message={getErrorMsg(error) ?? ''}/>
             }
         </section>
     );

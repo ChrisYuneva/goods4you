@@ -8,15 +8,17 @@ interface ButtonProps {
     ariaLabel?: string;
     type?: 'submit';
     className?: string;
+    disabled?: boolean;
 }
 
-function Button({ children, ariaLabel, onClick, type, className }: ButtonProps) {
+function Button({ children, ariaLabel, onClick, type, className, disabled }: ButtonProps) {
     return (
         <button
             className={cn(styles.btn, className)}
             aria-label={ariaLabel}
             onClick={onClick}
             type={type}
+            disabled={disabled}
         >
             {children}
         </button>
