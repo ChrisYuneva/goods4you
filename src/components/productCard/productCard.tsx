@@ -34,15 +34,6 @@ function ProductCard({ id, name, price, imgSrc }: ProductCardProps) {
 
     const count = getCountProduct();
 
-    // function counterChange(type: 'plus'| 'minus') {
-    //     if(type === 'plus') {
-    //         setCount(prev => prev + 1);
-    //     }
-    //     else {
-    //         setCount(prev => prev - 1);
-    //     }
-    // }
-
     function redirectToProduct(id: string) {
         navigate(`/product/${id}`);
     }
@@ -71,7 +62,6 @@ function ProductCard({ id, name, price, imgSrc }: ProductCardProps) {
                         ? (
                             <Button
                                 ariaLabel='Add item to basket'
-                                // onClick={() => counterChange('plus')}
                                 className={styles.btn}
                             >
                                 <img src={basket} alt='' className={styles.icon}/>

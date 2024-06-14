@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Input from '../components/input/input.tsx';
+import Input from '../../../components/input/input.tsx';
 
 const meta = {
-    title: 'Input',
+    title: 'Atoms/Input',
     component: Input,
     parameters: {
         layout: 'centered',
@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 export const DefaultInput: Story = {
     args: {
         id: '1',
-        disabled: true,
+        disabled: false,
         placeholder: 'Placeholder',
         value: 'Value',
         onChange: () => {}
@@ -26,9 +26,9 @@ export const DefaultInput: Story = {
 export const DisabledInput: Story = {
     args: {
         id: '2',
-        disabled: false,
+        disabled: true,
         placeholder: 'Placeholder',
-        value: 'Value',
+        value: '',
         onChange: () => {}
     },
 };

@@ -7,7 +7,7 @@ import CartPage from '../pages/cartPage/cartPage.tsx';
 import ProductPage from '../pages/productPage/productPage.tsx';
 import NotFoundPage from '../pages/notFoundPage/notFoundPage.tsx';
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
     {
         element: <Layout/>,
         children: [

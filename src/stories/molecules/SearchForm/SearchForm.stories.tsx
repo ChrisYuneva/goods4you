@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SearchForm from '../components/searchForm/searchForm.tsx';
-import {store} from '../app/store/store.ts';
+import SearchForm from '../../../components/searchForm/searchForm.tsx';
+import {store} from '../../../app/store/store.ts';
 import {Provider} from 'react-redux';
 
 const meta = {
-    title: 'SearchForm',
+    title: 'Molecules/SearchForm',
     component: SearchForm,
     decorators: [
         Story => (
@@ -25,5 +25,11 @@ type Story = StoryObj<typeof meta>;
 export const DefaultSearchForm: Story = {
     args: {
         loading: false
+    }
+};
+
+export const DisabledSearchForm: Story = {
+    args: {
+        loading: true
     }
 };

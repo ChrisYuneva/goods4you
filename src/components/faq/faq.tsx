@@ -1,5 +1,5 @@
 import styles from './faq.module.scss';
-import {questions} from '../../pages/mainPage/constants.ts';
+import {questions} from './constants.ts';
 import Accordion from '../accordion/accordion.tsx';
 
 function Faq() {
