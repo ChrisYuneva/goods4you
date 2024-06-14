@@ -20,18 +20,32 @@ function SearchForm({loading}: SearchFormProps) {
     const [searchValue, setSearchValue] = useState(name);
     const searchValueDebounce = useDebounce(searchValue);
 
-    async function onSubmitHandler (e: React.FormEvent<HTMLFormElement>) {
+    function onSubmitHandler (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         refetch();
     }
 
     useEffect(() => {
-        dispatch(changeSearchProductsParams({
-            ...params,
-            name: searchValueDebounce,
-            skip: 0
-        }));
+        if(searchValueDebounce !== '') {
+            dispatch(changeSearchProductsParams({
+                ...params,
+                name: searchValueDebounce,
+                skip: 0,
+            }));
+        }
     }, [dispatch, searchValueDebounce]);
+
+    function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const value = e.target.value;
+        setSearchValue(value);
+        if(value === '') {
+            dispatch(changeSearchProductsParams({
+                ...params,
+                name: searchValueDebounce,
+                skip: 0,
+            }));
+        }
+    }
 
     return (
         <form
@@ -44,7 +58,7 @@ function SearchForm({loading}: SearchFormProps) {
                 placeholder='Search by title'
                 value={searchValue}
                 disabled={loading}
-                onChange={e => setSearchValue(e.target.value)}
+                onChange={onChange}
             />
             <Button
                 type='submit'

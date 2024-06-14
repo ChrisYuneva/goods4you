@@ -29,7 +29,7 @@ export const productsApi = createApi({
                 currentCache.products.push(...newUniqueProducts);
             },
             forceRefetch({ currentArg, previousArg }) {
-                return currentArg !== previousArg;
+                return currentArg?.name !== previousArg?.name || currentArg?.skip !== previousArg?.skip;
             },
         }),
     }),
