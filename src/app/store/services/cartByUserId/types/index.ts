@@ -9,7 +9,7 @@ interface ProductCart {
     thumbnail: string
 }
 
-interface Cart {
+export interface Cart {
     id: number,
     products: ProductCart[],
     total: number,

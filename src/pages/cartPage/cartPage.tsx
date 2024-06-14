@@ -2,13 +2,15 @@ import styles from './cartPage.module.scss';
 import ProductItem from '../../components/productItem/productItem.tsx';
 import cn from 'classnames';
 import DescriptionItem from '../../components/descriptionItem/descriptionItem.tsx';
-import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserId.ts';
+import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
 import {getErrorMsg} from '../../app/utils';
 import ErrorMsg from '../../components/errorMsg/errorMsg.tsx';
 import SkeletonCartPage from '../../components/skeletons/ skeletonCartPage/ skeletonCartPage.tsx';
+import {useAppSelector} from '../../app/hooks/useRedux.ts';
 
 function CartPage() {
-    const {data, isLoading, error, isError} = useGetCartByUserIdQuery('');
+    const {isLoading, error, isError} = useGetCartByUserIdQuery('');
+    const {cart} = useAppSelector(state => state.cartByUserId);
 
     return (
         <section className={cn(styles.wrapper, 'container')}>
@@ -19,7 +21,7 @@ function CartPage() {
                         <>
                             <section className={styles.products}>
                                 {
-                                    data?.carts[0].products.map((product) => (
+                                    cart?.products.map((product) => (
                                         <ProductItem
                                             id={product.id}
                                             imgSrc={product.thumbnail}
@@ -35,15 +37,13 @@ function CartPage() {
                             </section>
                             <section className={styles.total} tabIndex={0}>
                                 <DescriptionItem title="Total count:" className={styles.totalCount}>
-                                    <span className={styles.count}>{data?.carts[0].totalProducts}</span>
+                                    <span className={styles.count}>{cart?.totalProducts}</span>
                                 </DescriptionItem>
                                 <DescriptionItem title="Total price:" className={styles.totalPrice}>
-                                    <span className={styles.price}>{data?.carts[0].total}&#36;</span>
+                                    <span className={styles.price}>{cart?.total}&#36;</span>
                                 </DescriptionItem>
-                                <DescriptionItem title="Total price with discount:"
-                                                 className={styles.totalDiscount}>
-                                                <span
-                                                    className={styles.discount}>{data?.carts[0].discountedTotal}&#36;</span>
+                                <DescriptionItem title="Total price with discount:" className={styles.totalDiscount}>
+                                    <span className={styles.discount}>{cart?.discountedTotal}&#36;</span>
                                 </DescriptionItem>
                             </section>
                         </>

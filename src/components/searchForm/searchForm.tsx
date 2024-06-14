@@ -4,7 +4,7 @@ import Button from '../button/button.tsx';
 import React, {useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
 import {searchProductsParamsSlice} from '../../app/store/slices/searchProductParams/searchProductParamsSlice.ts';
-import {useGetSearchProductsQuery} from '../../app/store/services/products/products.ts';
+import {useGetSearchProductsQuery} from '../../app/store/services/products/productsApi.ts';
 import useDebounce from '../../app/hooks/useDebounce.tsx';
 
 const { changeSearchProductsParams } = searchProductsParamsSlice.actions;
@@ -17,7 +17,7 @@ function SearchForm({loading}: SearchFormProps) {
     const {name, ...params} = useAppSelector(state => state.searchProductsParams);
     const dispatch = useAppDispatch();
     const {refetch} = useGetSearchProductsQuery({name, ...params});
-    const [searchValue, setSearchValue] = useState('');
+    const [searchValue, setSearchValue] = useState(name);
     const searchValueDebounce = useDebounce(searchValue);
 
     async function onSubmitHandler (e: React.FormEvent<HTMLFormElement>) {

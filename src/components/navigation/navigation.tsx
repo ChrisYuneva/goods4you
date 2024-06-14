@@ -1,15 +1,28 @@
 import styles from './navigation.module.scss';
 import basket from '../../assets/icons/basket.svg'
 import {Link} from 'react-router-dom';
-import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserId.ts';
+import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
+import {cartByUserIdSlice} from '../../app/store/slices/cartByUserId/cartByUserIdSlice.ts';
+import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
+import {useEffect} from 'react';
 
 interface NavigationProps {
     type: 'header' | 'footer';
     openMenuHandler?: () => void;
 }
 
+const {getCart} = cartByUserIdSlice.actions;
+
 function Navigation({ type, openMenuHandler }: NavigationProps) {
     const {data} = useGetCartByUserIdQuery('');
+    const {cart} = useAppSelector(state => state.cartByUserId);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if(!cart && data) {
+            dispatch(getCart(data.carts[0]));
+        }
+    }, [dispatch, data]);
 
     return (
         <nav className={styles.wrapper}>
@@ -27,7 +40,7 @@ function Navigation({ type, openMenuHandler }: NavigationProps) {
                                 Cart
                                 <img src={basket} alt='' className={styles.icon}/>
                                 {
-                                    data?.carts.length && <span className={styles.counter}>{data?.carts[0].totalQuantity ?? 0}</span>
+                                    cart && <span className={styles.counter}>{cart.totalQuantity}</span>
                                 }
                             </Link>
                         </li>

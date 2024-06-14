@@ -2,7 +2,7 @@ import styles from './catalog.module.scss';
 import Button from '../button/button.tsx';
 import SearchForm from '../searchForm/searchForm.tsx';
 import cn from 'classnames';
-import {useGetSearchProductsQuery} from '../../app/store/services/products/products.ts';
+import {useGetSearchProductsQuery} from '../../app/store/services/products/productsApi.ts';
 import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
 import {searchProductsParamsSlice} from '../../app/store/slices/searchProductParams/searchProductParamsSlice.ts';
 import {getErrorMsg} from '../../app/utils';

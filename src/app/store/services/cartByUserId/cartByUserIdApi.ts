@@ -6,7 +6,7 @@ export const cartByUserIdApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://dummyjson.com/' }),
     endpoints: (builder) => ({
         getCartByUserId: builder.query<CartInfo, string>({
-            query: () => 'carts/user/11',
+            query: () => 'carts/user/11'
         }),
     }),
 })

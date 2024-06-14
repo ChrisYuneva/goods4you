@@ -2,7 +2,7 @@ import styles from './productPage.module.scss';
 import cn from 'classnames';
 import {useState} from 'react';
 import ProductDescription from '../../components/productDescription/productDescription.tsx';
-import {useGetProductByIdQuery} from '../../app/store/services/products/products.ts';
+import {useGetProductByIdQuery} from '../../app/store/services/products/productsApi.ts';
 import {useParams} from 'react-router-dom';
 import ErrorMsg from '../../components/errorMsg/errorMsg.tsx';
 import {getErrorMsg} from '../../app/utils';
