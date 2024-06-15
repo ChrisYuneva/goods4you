@@ -5,7 +5,7 @@ import Counter from '../counter/counter.tsx';
 import {useNavigate} from 'react-router-dom';
 import Button from '../button/button.tsx';
 import basket from '../../assets/icons/basket.svg';
-import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
+import useGetQuantity from '../../app/hooks/useGetCount.tsx';
 
 interface ProductCardProps {
     id: number;
@@ -17,22 +17,11 @@ interface ProductCardProps {
 function ProductCard({ id, name, price, imgSrc }: ProductCardProps) {
     const navigate = useNavigate();
     const [isHover, setIsHover] = useState(false);
-    const {data} = useGetCartByUserIdQuery('');
+    const quantity = useGetQuantity(id);
 
     function handleHover(hovered: boolean) {
         setIsHover(hovered);
     }
-
-    function getCountProduct() {
-        if(data) {
-            const {products} = data.carts[0];
-            return products.find((product) => product.id === id)?.quantity ?? 0;
-        }
-
-        return 0;
-    }
-
-    const count = getCountProduct();
 
     function redirectToProduct(id: string) {
         navigate(`/product/${id}`);
@@ -54,11 +43,11 @@ function ProductCard({ id, name, price, imgSrc }: ProductCardProps) {
             </div>
             <section className={styles.product}>
                 <section className={styles.description} onClick={() => redirectToProduct(`${id}`)}>
-                    <p className={cn(styles.title, {[styles.titleHover]: isHover, [styles.hiddenTitle]: count>0})}>{name}</p>
+                    <p className={cn(styles.title, {[styles.titleHover]: isHover, [styles.hiddenTitle]: quantity>0})}>{name}</p>
                     <span className={styles.price}>{price}&#36;</span>
                 </section>
                 {
-                    count === 0
+                    quantity === 0
                         ? (
                             <Button
                                 ariaLabel='Add item to basket'
@@ -68,7 +57,7 @@ function ProductCard({ id, name, price, imgSrc }: ProductCardProps) {
                             </Button>
                         )
                         : (
-                            <Counter count={count} counterChange={() => {}} />
+                            <Counter id={id} quantity={quantity} />
                         )
                 }
             </section>

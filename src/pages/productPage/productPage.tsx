@@ -4,9 +4,9 @@ import {useState} from 'react';
 import ProductDescription from '../../components/productDescription/productDescription.tsx';
 import {useGetProductByIdQuery} from '../../app/store/services/products/productsApi.ts';
 import {useParams} from 'react-router-dom';
-import ErrorMsg from '../../components/errorMsg/errorMsg.tsx';
 import {getErrorMsg} from '../../app/utils';
 import SkeletonProductPage from '../../components/skeletons/skeletonProductPage/skeletonProductPage.tsx';
+import AlertMsg from '../../components/alertMsg/alertMsg.tsx';
 
 function ProductPage() {
     const {id} = useParams<{ id: string }>();
@@ -20,7 +20,7 @@ function ProductPage() {
     return (
         <section className={cn(styles.wrapper, 'container')}>
             {
-                isError && <ErrorMsg message={getErrorMsg(error) ?? ''}/>
+                isError && <AlertMsg type='error' message={getErrorMsg(error) ?? ''}/>
             }
             {
                 !isError && (
@@ -50,6 +50,7 @@ function ProductPage() {
                                             </div>
                                         </section>
                                         <ProductDescription
+                                            id={Number(data?.id)}
                                             name={data?.title ?? ''}
                                             skuId={data?.sku ?? ''}
                                             rating={data?.rating ?? 0}

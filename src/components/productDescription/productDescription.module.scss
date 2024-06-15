@@ -14,15 +14,18 @@
   .head {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     @include for-phone {
       flex-direction: column;
       gap: 10px;
+      align-items: baseline;
     }
 
     @include for-tablet {
       flex-direction: column;
       gap: 10px;
+      align-items: baseline;
     }
 
     .text {
@@ -71,6 +74,18 @@
     .btn {
       margin-top: 37px;
       max-width: 200px;
+
+      @include for-phone {
+        max-width: 100%;
+      }
+
+      @include for-desktop {
+        margin-top: 20px;
+      }
+    }
+
+    .counter {
+      margin-top: 37px;
 
       @include for-phone {
         max-width: 100%;

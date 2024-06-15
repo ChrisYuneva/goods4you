@@ -4,9 +4,9 @@ import cn from 'classnames';
 import DescriptionItem from '../../components/descriptionItem/descriptionItem.tsx';
 import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
 import {getErrorMsg} from '../../app/utils';
-import ErrorMsg from '../../components/errorMsg/errorMsg.tsx';
 import SkeletonCartPage from '../../components/skeletons/ skeletonCartPage/ skeletonCartPage.tsx';
 import {useAppSelector} from '../../app/hooks/useRedux.ts';
+import AlertMsg from '../../components/alertMsg/alertMsg.tsx';
 
 function CartPage() {
     const {isLoading, error, isError} = useGetCartByUserIdQuery('');
@@ -17,7 +17,7 @@ function CartPage() {
             <h1 className={styles.title} tabIndex={0}>My cart</h1>
             <section className={styles.content}>
                 {
-                    !isLoading && !isError && (
+                    !isLoading && !isError && cart?.products.length &&(
                         <>
                             <section className={styles.products}>
                                 {
@@ -27,9 +27,6 @@ function CartPage() {
                                             imgSrc={product.thumbnail}
                                             name={product.title}
                                             price={product.price}
-                                            quantity={product.quantity}
-                                            counterChange={() => {
-                                            }}
                                             key={product.id}
                                         />
                                     ))
@@ -37,7 +34,7 @@ function CartPage() {
                             </section>
                             <section className={styles.total} tabIndex={0}>
                                 <DescriptionItem title="Total count:" className={styles.totalCount}>
-                                    <span className={styles.count}>{cart?.totalProducts}</span>
+                                    <span className={styles.count}>{cart?.totalQuantity}</span>
                                 </DescriptionItem>
                                 <DescriptionItem title="Total price:" className={styles.totalPrice}>
                                     <span className={styles.price}>{cart?.total}&#36;</span>
@@ -50,11 +47,14 @@ function CartPage() {
                     )
                 }
                 {
+                    !cart?.products.length && !isLoading && !isError && <AlertMsg message='Your cart is empty :(' />
+                }
+                {
                     isLoading && <SkeletonCartPage/>
                 }
             </section>
             {
-                isError && <ErrorMsg message={getErrorMsg(error) ?? ''}/>
+                isError && <AlertMsg type='error' message={getErrorMsg(error) ?? ''} />
             }
         </section>
     );

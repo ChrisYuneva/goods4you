@@ -19,7 +19,7 @@ function Navigation({ type, openMenuHandler }: NavigationProps) {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if(!cart && data) {
+        if(!cart && data && data.carts.length) {
             dispatch(getCart(data.carts[0]));
         }
     }, [dispatch, data]);

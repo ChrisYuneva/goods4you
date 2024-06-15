@@ -6,9 +6,9 @@ import {useGetSearchProductsQuery} from '../../app/store/services/products/produ
 import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
 import {searchProductsParamsSlice} from '../../app/store/slices/searchProductParams/searchProductParamsSlice.ts';
 import {getErrorMsg} from '../../app/utils';
-import ErrorMsg from '../errorMsg/errorMsg.tsx';
 import SkeletonProductCard from '../skeletons/skeletonProductCard/skeletonProductCard.tsx';
 import ProductCard from '../productCard/productCard.tsx';
+import AlertMsg from '../alertMsg/alertMsg.tsx';
 
 const { changeSearchProductsParams } = searchProductsParamsSlice.actions;
 
@@ -20,7 +20,7 @@ function Catalog() {
     return (
         <section className={cn(styles.wrapper, 'container')} id='catalog'>
             {
-                isError && <ErrorMsg message={getErrorMsg(error) ?? ''} />
+                isError && <AlertMsg type='error' message={getErrorMsg(error) ?? ''} />
             }
             {
                 !isError && (

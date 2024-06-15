@@ -2,17 +2,18 @@ import styles from "./productItem.module.scss";
 import Button from '../button/button.tsx';
 import {Link} from 'react-router-dom';
 import Counter from '../counter/counter.tsx';
+import useGetQuantity from '../../app/hooks/useGetCount.tsx';
 
 interface ProductItemProps {
     id: number;
     imgSrc: string;
     name: string;
     price: number;
-    quantity: number;
-    counterChange: (type: 'plus'| 'minus') => void;
 }
 
-function ProductItem({ id, imgSrc, name, price, quantity, counterChange }: ProductItemProps) {
+function ProductItem({ id, imgSrc, name, price }: ProductItemProps) {
+    const quantity = useGetQuantity(id);
+
     return (
         <article className={styles.wrapper}>
             <Link to={`/product/${id}`} className={styles.product} aria-label='Go to product page'>
@@ -23,7 +24,7 @@ function ProductItem({ id, imgSrc, name, price, quantity, counterChange }: Produ
                 </div>
             </Link>
             <div className={styles.btnContainer}>
-                <Counter count={quantity} counterChange={counterChange} />
+                <Counter id={id} quantity={quantity} />
             </div>
             <Button className={styles.btnDelete} onClick={() => {}}>Delete</Button>
         </article>
