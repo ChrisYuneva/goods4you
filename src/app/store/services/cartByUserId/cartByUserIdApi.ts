@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {CartInfo} from './types';
 
 export const cartByUserIdApi = createApi({
@@ -11,4 +11,4 @@ export const cartByUserIdApi = createApi({
     }),
 })
 
-export const { useGetCartByUserIdQuery } = cartByUserIdApi;
+export const {useGetCartByUserIdQuery } = cartByUserIdApi;

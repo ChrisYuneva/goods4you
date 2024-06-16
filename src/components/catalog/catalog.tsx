@@ -20,18 +20,15 @@ function Catalog() {
     return (
         <section className={cn(styles.wrapper, 'container')} id='catalog'>
             {
-                isError && <AlertMsg type='error' message={getErrorMsg(error) ?? ''} />
-            }
-            {
                 !isError && (
                     <>
                         <h2 className={styles.catalogTitle} tabIndex={0}>Catalog</h2>
                         <section className={styles.catalog}>
-                            <SearchForm loading={isLoading}/>
+                            <SearchForm loading={isLoading} />
                             <section className={styles.products}>
                                 {
-                                    !isLoading && data?.products.length === 0 && (
-                                        <p>Sorry, nothing was found for this request :(</p>
+                                    !isFetching && data?.products.length === 0 && (
+                                        <AlertMsg type='default' message='Sorry, nothing was found for this request :(' />
                                     )
                                 }
                                 {
@@ -64,6 +61,9 @@ function Catalog() {
                         </section>
                     </>
                 )
+            }
+            {
+                isError && <AlertMsg type='error' message={getErrorMsg(error) ?? ''} />
             }
         </section>
     )

@@ -40,7 +40,7 @@ function Navigation({ type, openMenuHandler }: NavigationProps) {
                                 Cart
                                 <img src={basket} alt='' className={styles.icon}/>
                                 {
-                                    cart && <span className={styles.counter}>{cart.totalQuantity}</span>
+                                    cart && cart.totalQuantity > 0 && <span className={styles.counter}>{cart.totalQuantity}</span>
                                 }
                             </Link>
                         </li>

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Button from '../../../components/button/button.tsx';
 
-import './button.css';
+import styles from './button.module.css';
 
 const meta = {
   title: 'Atoms/Button',
@@ -17,10 +17,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const Default: Story = {
+    args: {
+        children: 'Default Button',
+    }
+};
+
 export const CustomClass: Story = {
   args: {
     children: 'Custom Class Button',
-    className: 'custom-class',
+    className: styles.customClass,
   }
 };
 

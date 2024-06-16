@@ -31,11 +31,14 @@ function ProductPage() {
                         {
                             !isLoading && (
                                 <>
-                                    <p className={styles.title} tabIndex={0}>{data?.id}</p>
+                                    <p className={styles.title} tabIndex={0}>Product {data?.id}</p>
                                     <section className={styles.product}>
                                         <section className={styles.slider}>
-                                            <img src={data?.images[activeImg]} alt={data?.title}
-                                                 className={styles.mainImg}/>
+                                            <img
+                                                src={data?.images[activeImg]}
+                                                alt={data?.title}
+                                                className={styles.mainImg}
+                                            />
                                             <div className={styles.items}>
                                                 {
                                                     data?.images.map((item, i) => (

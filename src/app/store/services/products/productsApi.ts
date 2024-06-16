@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {Product, Products} from './types';
 import {GetSearchProductsParams} from '../../slices/searchProductParams/types';
 
@@ -12,7 +12,7 @@ export const productsApi = createApi({
         getSearchProducts: builder.query<Products, GetSearchProductsParams>({
             query: ({name, limit, skip}) => (
                 {
-                    url: '/products/search?',
+                    url: '/products/search',
                     params: {
                         q: name,
                         limit: limit,
@@ -20,7 +20,7 @@ export const productsApi = createApi({
                     }
                 }
             ),
-            serializeQueryArgs: ({ endpointName, queryArgs }) => {
+            serializeQueryArgs: ({ endpointName, queryArgs}) => {
                 return endpointName + queryArgs.name;
             },
             merge: (currentCache, newItems) => {
@@ -28,11 +28,11 @@ export const productsApi = createApi({
                 const newUniqueProducts = newItems.products.filter(product => !existingIds.has(product.id));
                 currentCache.products.push(...newUniqueProducts);
             },
-            forceRefetch({ currentArg, previousArg }) {
+            forceRefetch({currentArg, previousArg}) {
                 return currentArg?.name !== previousArg?.name || currentArg?.skip !== previousArg?.skip;
             },
         }),
     }),
 })
 
-export const { useGetProductByIdQuery, useGetSearchProductsQuery } = productsApi;
+export const {useGetProductByIdQuery, useGetSearchProductsQuery} = productsApi;

@@ -91,6 +91,7 @@
 
     &:hover {
       text-decoration: underline;
+      color: var(--grey);
     }
 
     @include for-phone {

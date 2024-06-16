@@ -12,7 +12,6 @@ interface CounterProps {
 }
 
 function Counter({ quantity, size, className }: CounterProps) {
-
     return (
         <div className={cn(styles.counter, {[styles.counterBig]: size === 'big'}, className)}>
             <Button ariaLabel='Reduce the number of items in the cart by 1' onClick={() => {}} className={cn(styles.btn, {[styles.btnBig]: size === 'big'})}>

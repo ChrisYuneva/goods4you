@@ -18,7 +18,7 @@ function SearchForm({loading}: SearchFormProps) {
     const dispatch = useAppDispatch();
     const {refetch} = useGetSearchProductsQuery({name, ...params});
     const [searchValue, setSearchValue] = useState(name);
-    const searchValueDebounce = useDebounce(searchValue);
+    const searchValueDebounce = useDebounce(searchValue, 350);
 
     function onSubmitHandler (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -41,7 +41,7 @@ function SearchForm({loading}: SearchFormProps) {
         if(value === '') {
             dispatch(changeSearchProductsParams({
                 ...params,
-                name: searchValueDebounce,
+                name: value,
                 skip: 0,
             }));
         }
