@@ -20,6 +20,7 @@
   padding: 21px 16px;
   border: none;
   outline: none;
+  box-sizing: border-box;
 
   &::placeholder {
     font-size: 16px;

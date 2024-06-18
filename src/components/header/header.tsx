@@ -7,16 +7,21 @@ import BurgerMenu from '../burgerMenu/burgerMenu.tsx';
 function Header() {
     const location = useLocation();
     const isHome = useMemo(() => location.pathname === '/', [location.pathname]);
+    const isLogin = useMemo(() => location.pathname === '/login', [location.pathname]);
 
     return (
         <header className={`${styles.header} container ${isHome ? styles.headerHome : ''}`}>
             <div className={`${styles.content} ${isHome ? styles.home : ''}`}>
                 <Link to={'/'} className={styles.logo}>Goods4you</Link>
-                <div className={styles.nav}>
-                    <Navigation type='header' />
-                </div>
+                {
+                    !isLogin && (
+                        <div className={styles.nav}>
+                            <Navigation type="header"/>
+                        </div>
+                    )
+                }
                 <div className={styles.mobileNav}>
-                    <BurgerMenu />
+                <BurgerMenu />
                 </div>
             </div>
         </header>
