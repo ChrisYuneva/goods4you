@@ -7,9 +7,11 @@ import {getErrorMsg} from '../../app/utils';
 import SkeletonCartPage from '../../components/skeletons/ skeletonCartPage/ skeletonCartPage.tsx';
 import {useAppSelector} from '../../app/hooks/useRedux.ts';
 import AlertMsg from '../../components/alertMsg/alertMsg.tsx';
+import useAuth from '../../app/hooks/useAuth.tsx';
 
 function CartPage() {
-    const {isLoading, error, isError} = useGetCartByUserIdQuery('');
+    const id = useAuth();
+    const {isLoading, error, isError} = useGetCartByUserIdQuery(id ?? 0);
     const {cart} = useAppSelector(state => state.cartByUserId);
 
     return (

@@ -10,3 +10,15 @@ export function getErrorMsg(error: FetchBaseQueryError | SerializedError | undef
         return error.message;
     }
 }
+
+export function getToken() {
+    return localStorage.getItem('token') ?? '';
+}
+
+export function getErrorStatus(error: FetchBaseQueryError | SerializedError | undefined) {
+    if(error) {
+        if('status' in error) {
+            return error.status;
+        }
+    }
+}

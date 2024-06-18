@@ -1,13 +1,21 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {Product, Products} from './types';
 import {GetSearchProductsParams} from '../../slices/searchProductParams/types';
+import {getToken} from '../../../utils';
 
 export const productsApi = createApi({
     reducerPath: 'productsApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://dummyjson.com/' }),
     endpoints: (builder) => ({
         getProductById: builder.query<Product, string>({
-            query: (id: string) => `products/${id}`,
+            query: (id: string) => (
+                {
+                    url: `products/${id}`,
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
+                    }
+                }
+            ),
         }),
         getSearchProducts: builder.query<Products, GetSearchProductsParams>({
             query: ({name, limit, skip}) => (
@@ -17,6 +25,9 @@ export const productsApi = createApi({
                         q: name,
                         limit: limit,
                         skip: skip
+                    },
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
                     }
                 }
             ),

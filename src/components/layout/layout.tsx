@@ -1,22 +1,30 @@
 import Header from '../header/header.tsx';
 import Footer from '../footer/footer.tsx';
-import {Outlet} from 'react-router-dom';
+import {Navigate, Outlet} from 'react-router-dom';
 import styles from './layout.module.scss';
 import ScrollToTop from '../scrollToTop/scrollToTop.tsx';
-import {useMemo} from 'react';
+import useAuth from '../../app/hooks/useAuth.tsx';
 
 function Layout() {
-    const isLogin = useMemo(() => location.pathname === '/login', [location.pathname]);
+    const auth = useAuth();
 
     return (
         <div className={styles.outerContainer}>
             <ScrollToTop />
-            <Header />
-            <main className={styles.page}>
-               <Outlet />
-            </main>
             {
-                !isLogin && <Footer />
+                auth
+                ? (
+                    <>
+                        <Header />
+                        <main className={styles.page}>
+                            <Outlet/>
+                        </main>
+                        <Footer/>
+                    </>
+                    )
+                    : (
+                        <Navigate to='/login'/>
+                    )
             }
         </div>
     )

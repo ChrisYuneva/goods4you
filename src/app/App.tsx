@@ -10,7 +10,7 @@ import LoginPage from '../pages/loginPage/loginPage.tsx';
 
 export const router = createBrowserRouter([
     {
-        element: <Layout/>,
+        element: <Layout />,
         children: [
             {
                 path: '/',
@@ -24,13 +24,13 @@ export const router = createBrowserRouter([
                 path: '/product/:id',
                 element: <ProductPage />,
             },
-            {
-                path: '/login',
-                element: <LoginPage/>,
-            },
         ],
         errorElement: <NotFoundPage />,
-    }
+    },
+    {
+        path: '/login',
+        element: <LoginPage/>,
+    },
 ]);
 
 function App() {

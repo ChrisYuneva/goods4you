@@ -14,7 +14,8 @@ interface NavigationProps {
 const {getCart} = cartByUserIdSlice.actions;
 
 function Navigation({ type, openMenuHandler }: NavigationProps) {
-    const {data} = useGetCartByUserIdQuery('');
+    const {id} = useAppSelector(state => state.auth);
+    const {data} = useGetCartByUserIdQuery(id ?? 0);
     const {cart} = useAppSelector(state => state.cartByUserId);
     const dispatch = useAppDispatch();
 
