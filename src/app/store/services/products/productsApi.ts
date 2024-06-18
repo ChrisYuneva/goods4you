@@ -1,11 +1,12 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {createApi} from '@reduxjs/toolkit/query/react';
 import {Product, Products} from './types';
 import {GetSearchProductsParams} from '../../slices/searchProductParams/types';
 import {getToken} from '../../../utils';
+import baseQueryWithRedirect from '../../baseQueryWithRedirect/baseQueryWithRedirect.ts';
 
 export const productsApi = createApi({
     reducerPath: 'productsApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://dummyjson.com/' }),
+    baseQuery: baseQueryWithRedirect,
     endpoints: (builder) => ({
         getProductById: builder.query<Product, string>({
             query: (id: string) => (

@@ -1,10 +1,11 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {createApi} from '@reduxjs/toolkit/query/react';
 import {CartInfo} from './types';
 import {getToken} from '../../../utils';
+import baseQueryWithRedirect from '../../baseQueryWithRedirect/baseQueryWithRedirect.ts';
 
 export const cartByUserIdApi = createApi({
     reducerPath: 'cartByUserIdApi',
-    baseQuery: fetchBaseQuery({baseUrl: 'https://dummyjson.com/'}),
+    baseQuery: baseQueryWithRedirect,
     endpoints: (builder) => ({
         getCartByUserId: builder.query<CartInfo, number>({
             query: (id: number) => (

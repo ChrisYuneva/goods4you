@@ -20,6 +20,7 @@ function LoginForm() {
         const authData = await getUser({
             username: loginValue,
             password: passwordValue,
+            expiresInMins: 1,
         }).unwrap();
 
         if(authData) {
