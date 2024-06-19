@@ -25,10 +25,6 @@ function CartPage() {
                                 {
                                     cart?.products.map((product) => (
                                         <ProductItem
-                                            id={product.id}
-                                            imgSrc={product.thumbnail}
-                                            name={product.title}
-                                            price={product.price}
                                             product={product}
                                             key={product.id}
                                         />

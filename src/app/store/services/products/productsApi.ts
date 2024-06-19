@@ -8,8 +8,8 @@ export const productsApi = createApi({
     reducerPath: 'productsApi',
     baseQuery: baseQueryWithRedirect,
     endpoints: (builder) => ({
-        getProductById: builder.query<Product, string>({
-            query: (id: string) => (
+        getProductById: builder.query<Product, number>({
+            query: (id) => (
                 {
                     url: `products/${id}`,
                     headers: {

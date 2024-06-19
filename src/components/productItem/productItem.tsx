@@ -3,12 +3,13 @@ import Button from '../button/button.tsx';
 import {Link} from 'react-router-dom';
 import Counter from '../counter/counter.tsx';
 import useGetQuantity from '../../app/hooks/useGetCount.tsx';
-import {ProductCart} from '../../app/store/services/cartByUserId/types';
 import {cartByUserIdSlice} from '../../app/store/slices/cartByUserId/cartByUserIdSlice.ts';
 import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
 import {useUpdateCartByUserIdMutation} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
 import {useEffect} from 'react';
 import Loader from '../loader/loader.tsx';
+import {ProductCart} from '../../app/store/services/cartByUserId/types';
+import {useGetProductByIdQuery} from '../../app/store/services/products/productsApi.ts';
 
 interface ProductItemProps {
     product: ProductCart;
@@ -21,6 +22,7 @@ function ProductItem({ product }: ProductItemProps) {
     const dispatch = useAppDispatch();
     const [ updateCartByUserId, {data, isLoading} ] = useUpdateCartByUserIdMutation();
     const {cart} = useAppSelector(state => state.cartByUserId);
+    const {data: dataProduct} = useGetProductByIdQuery(product.id);
 
     function deleteProduct() {
         updateCartByUserId(
@@ -50,7 +52,11 @@ function ProductItem({ product }: ProductItemProps) {
                 </div>
             </Link>
             <div className={styles.btnContainer}>
-                <Counter product={product} quantity={quantity} />
+                <Counter
+                    product={product}
+                    quantity={quantity}
+                    stock={dataProduct?.stock ?? 1}
+                />
             </div>
             <Button className={styles.btnDelete} onClick={deleteProduct}>Delete</Button>
             {

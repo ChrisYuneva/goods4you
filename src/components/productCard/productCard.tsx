@@ -13,7 +13,7 @@ import {Product} from '../../app/store/services/products/types';
 import {productToProductCart} from '../../app/utils';
 
 interface ProductCardProps {
-    product: Product
+    product: Product,
 }
 
 const {addProduct} = cartByUserIdSlice.actions;
@@ -77,7 +77,11 @@ function ProductCard({ product }: ProductCardProps) {
                             </Button>
                         )
                         : (
-                            <Counter product={productToProductCart(product)} quantity={quantity} />
+                            <Counter
+                                product={productToProductCart(product)}
+                                quantity={quantity}
+                                stock={product.stock}
+                            />
                         )
                 }
             </section>

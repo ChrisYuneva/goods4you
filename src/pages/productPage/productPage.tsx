@@ -11,7 +11,7 @@ import AlertMsg from '../../components/alertMsg/alertMsg.tsx';
 function ProductPage() {
     const {id} = useParams<{ id: string }>();
     const [activeImg, setActiveImg] = useState(0);
-    const {data, isLoading, isError, error} = useGetProductByIdQuery(id ?? '');
+    const {data, isLoading, isError, error} = useGetProductByIdQuery(Number(id));
 
     function changeMainImg(index: number) {
         setActiveImg(index);

@@ -84,7 +84,13 @@ function ProductDescription({ product }: ProductDescriptionProps) {
                             </Button>
                         )
                         : (
-                            <Counter product={productToProductCart(product)} size='big' quantity={quantity} className={styles.counter}/>
+                            <Counter
+                                product={productToProductCart(product)}
+                                size='big'
+                                quantity={quantity}
+                                stock={product.stock}
+                                className={styles.counter}
+                            />
                         )
                 }
             </section>
