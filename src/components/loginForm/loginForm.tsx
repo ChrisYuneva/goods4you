@@ -7,19 +7,24 @@ import {useNavigate} from 'react-router-dom';
 import AlertMsg from '../alertMsg/alertMsg.tsx';
 import {getErrorMsg} from '../../app/utils';
 
+interface LoginForm {
+    username: string;
+    password: string;
+}
+
 function LoginForm() {
-    const [loginValue, setLoginValue] = useState('');
-    const [passwordValue, setPasswordValue] = useState('');
-
-    const navigate = useNavigate();
-
     const [getUser, { isError, error}] = useGetUserMutation();
+    const navigate = useNavigate();
+    const [loginForm, setLoginForm] = useState<LoginForm>({
+        username: '',
+        password: ''
+    });
 
     async function onSubmitHandler(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const authData = await getUser({
-            username: loginValue,
-            password: passwordValue,
+            username: loginForm.username,
+            password: loginForm.password,
             expiresInMins: 1,
         }).unwrap();
 
@@ -28,12 +33,9 @@ function LoginForm() {
             navigate('/');
         }
     }
-    function onChangeLogin(e: React.ChangeEvent<HTMLInputElement>) {
-        setLoginValue(e.target.value);
-    }
 
-    function onChangePassword(e: React.ChangeEvent<HTMLInputElement>) {
-        setPasswordValue(e.target.value);
+    function onChangeLoginForm(e: React.ChangeEvent<HTMLInputElement>) {
+        setLoginForm((prev) => ({ ...prev, [e.target.id]: e.target.value }));
     }
 
     return (
@@ -43,16 +45,16 @@ function LoginForm() {
             onSubmit={onSubmitHandler}
         >
             <Input
-                id='login'
+                id='username'
                 placeholder='Login'
-                value={loginValue}
-                onChange={onChangeLogin}
+                value={loginForm.username}
+                onChange={onChangeLoginForm}
             />
             <Input
                 id='password'
                 placeholder='Password'
-                value={passwordValue}
-                onChange={onChangePassword}
+                value={loginForm.password}
+                onChange={onChangeLoginForm}
                 type='password'
             />
             <Button
