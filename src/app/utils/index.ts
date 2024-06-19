@@ -1,5 +1,7 @@
 import {FetchBaseQueryError} from '@reduxjs/toolkit/query';
 import {SerializedError} from '@reduxjs/toolkit';
+import {Product} from '../store/services/products/types';
+import {ProductCart} from '../store/services/cartByUserId/types';
 
 export function getErrorMsg(error: FetchBaseQueryError | SerializedError | undefined) {
     if (error) {
@@ -20,5 +22,18 @@ export function getErrorStatus(error: FetchBaseQueryError | SerializedError | un
         if('status' in error) {
             return error.status;
         }
+    }
+}
+
+export function productToProductCart(product: Product): ProductCart {
+    return {
+        discountPercentage: product.discountPercentage,
+        discountedTotal: product.discountPercentage,
+        id: product.id,
+        price: product.price,
+        quantity: 0,
+        thumbnail: product.thumbnail,
+        title: product.title,
+        total: 0
     }
 }

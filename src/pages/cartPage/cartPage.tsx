@@ -19,7 +19,7 @@ function CartPage() {
             <h1 className={styles.title} tabIndex={0}>My cart</h1>
             <section className={styles.content}>
                 {
-                    !isLoading && !isError && cart?.products.length && (
+                    !isLoading && !isError && !!cart?.products.length && (
                         <>
                             <section className={styles.products}>
                                 {
@@ -29,6 +29,7 @@ function CartPage() {
                                             imgSrc={product.thumbnail}
                                             name={product.title}
                                             price={product.price}
+                                            product={product}
                                             key={product.id}
                                         />
                                     ))

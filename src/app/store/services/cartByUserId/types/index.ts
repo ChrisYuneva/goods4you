@@ -1,4 +1,4 @@
-interface ProductCart {
+export interface ProductCart {
     id: number,
     title: string,
     price: number,
@@ -24,4 +24,15 @@ export interface CartInfo {
     total: number,
     skip: number,
     limit: number
+}
+
+interface UpdateCart {
+    id: number,
+    quantity: number,
+}
+
+export interface UpdateCartRequest {
+    id: number;
+    products: UpdateCart[],
+    merge?: boolean,
 }

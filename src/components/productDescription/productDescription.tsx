@@ -5,31 +5,44 @@ import Button from '../button/button.tsx';
 import {memo} from 'react';
 import Counter from '../counter/counter.tsx';
 import useGetQuantity from '../../app/hooks/useGetCount.tsx';
+import {Product} from '../../app/store/services/products/types';
+import {productToProductCart} from '../../app/utils';
+import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
+import {cartByUserIdSlice} from '../../app/store/slices/cartByUserId/cartByUserIdSlice.ts';
+import {useUpdateCartByUserIdMutation} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
 
 interface ProductDescriptionProps {
-    id: number;
-    name: string;
-    skuId: string;
-    rating: number;
-    price: number;
-    discountPercentage: number;
-    stock: number;
-    brand: string;
-    category: string;
-    description: string;
+   product: Product;
 }
 
-function ProductDescription({ id, name, skuId, rating, description, category, discountPercentage, price, stock, brand }: ProductDescriptionProps) {
-    const ratingArr: number[] = new Array(Math.round(rating)).fill(1);
-    const discountPrice = (price - (price*(discountPercentage/100))).toFixed(2);
-    const quantity = useGetQuantity(id);
+const {addProduct} = cartByUserIdSlice.actions;
+
+function ProductDescription({ product }: ProductDescriptionProps) {
+    const ratingArr: number[] = new Array(Math.round(product.rating)).fill(1);
+    const discountPrice = (product.price - (product.price*(product.discountPercentage/100))).toFixed(2);
+    const quantity = useGetQuantity(product.id);
+    const dispatch = useAppDispatch();
+    const [updateCartByUserId] = useUpdateCartByUserIdMutation();
+    const {cart} = useAppSelector(state => state.cartByUserId);
+
+    function addProductHandle() {
+        dispatch(addProduct(productToProductCart(product)));
+        if(product) {
+            updateCartByUserId(
+                {
+                    id: cart?.id ?? 0,
+                    products: cart?.products ?? [],
+                    merge: true,
+                });
+        }
+    }
 
     return (
         <section className={styles.description} tabIndex={0}>
             <div className={styles.head}>
-                <h1 className={styles.name}>{name}</h1>
+                <h1 className={styles.name}>{product.title}</h1>
                 <DescriptionItem title="SKU ID">
-                    <span className={styles.text}>{skuId}</span>
+                    <span className={styles.text}>{product.sku}</span>
                 </DescriptionItem>
             </div>
             <section className={styles.items}>
@@ -43,35 +56,35 @@ function ProductDescription({ id, name, skuId, rating, description, category, di
                     </div>
                 </DescriptionItem>
                 <DescriptionItem title='Base price'>
-                    <span className={styles.text}>{price}&#36;</span>
+                    <span className={styles.text}>{product.price}&#36;</span>
                 </DescriptionItem>
                 <DescriptionItem title='Discount percentage'>
-                    <span className={styles.text}>{discountPercentage}&#37;</span>
+                    <span className={styles.text}>{product.discountPercentage}&#37;</span>
                 </DescriptionItem>
                 <DescriptionItem title='Discount price'>
                     <span className={styles.text}>{discountPrice}&#36;</span>
                 </DescriptionItem>
                 <DescriptionItem title='Stock'>
-                    <span className={styles.text}>{stock}</span>
+                    <span className={styles.text}>{product.stock}</span>
                 </DescriptionItem>
                 <DescriptionItem title='Brand'>
-                    <span className={styles.text}>{brand}</span>
+                    <span className={styles.text}>{product.brand}</span>
                 </DescriptionItem>
                 <DescriptionItem title='Category'>
-                    <span className={styles.text}>{category}</span>
+                    <span className={styles.text}>{product.category}</span>
                 </DescriptionItem>
                 <DescriptionItem title='Description'>
-                    <span className={styles.text}>{description}</span>
+                    <span className={styles.text}>{product.description}</span>
                 </DescriptionItem>
                 {
                     quantity === 0
                         ? (
-                            <Button className={styles.btn} onClick={() => {}}>
+                            <Button className={styles.btn} onClick={addProductHandle}>
                                 Add to cart
                             </Button>
                         )
                         : (
-                            <Counter id={id} size='big' quantity={quantity} className={styles.counter}/>
+                            <Counter product={productToProductCart(product)} size='big' quantity={quantity} className={styles.counter}/>
                         )
                 }
             </section>

@@ -52,18 +52,9 @@ function ProductPage() {
                                                 }
                                             </div>
                                         </section>
-                                        <ProductDescription
-                                            id={Number(data?.id)}
-                                            name={data?.title ?? ''}
-                                            skuId={data?.sku ?? ''}
-                                            rating={data?.rating ?? 0}
-                                            price={data?.price ?? 0}
-                                            discountPercentage={data?.discountPercentage ?? 0}
-                                            stock={data?.stock ?? 0}
-                                            brand={data?.brand ?? ''}
-                                            category={data?.category ?? ''}
-                                            description={data?.description ?? ''}
-                                        />
+                                        {
+                                            data && <ProductDescription product={data} />
+                                        }
                                     </section>
                                 </>
                             )

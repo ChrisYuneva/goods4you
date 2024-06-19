@@ -34,10 +34,7 @@ function Catalog() {
                                 {
                                     !isLoading && data?.products.map((product, i) => (
                                         <ProductCard
-                                            name={product.title}
-                                            price={product.price}
-                                            imgSrc={product.thumbnail}
-                                            id={product.id}
+                                            product={product}
                                             key={`${product.id}-${i}`}
                                         />
                                     ))
