@@ -1,7 +1,7 @@
 import {createApi} from '@reduxjs/toolkit/query/react';
 import {Cart, CartInfo, UpdateCartRequest} from './types';
 import {getToken} from '../../../utils';
-import baseQueryWithRedirect from '../../baseQueryWithRedirect/baseQueryWithRedirect.ts';
+import baseQueryWithRedirect from '../baseQueryWithRedirect/baseQueryWithRedirect.ts';
 
 export const cartByUserIdApi = createApi({
     reducerPath: 'cartByUserIdApi',

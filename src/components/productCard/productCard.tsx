@@ -6,25 +6,20 @@ import {useNavigate} from 'react-router-dom';
 import Button from '../button/button.tsx';
 import basket from '../../assets/icons/basket.svg';
 import useGetQuantity from '../../app/hooks/useGetCount.tsx';
-import {useUpdateCartByUserIdMutation} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
-import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
-import {cartByUserIdSlice} from '../../app/store/slices/cartByUserId/cartByUserIdSlice.ts';
 import {Product} from '../../app/store/services/products/types';
 import {productToProductCart} from '../../app/utils';
+import Loader from '../loader/loader.tsx';
+import {useAddProduct} from '../../app/hooks/useAddProduct.tsx';
 
 interface ProductCardProps {
     product: Product,
 }
 
-const {addProduct} = cartByUserIdSlice.actions;
-
 function ProductCard({ product }: ProductCardProps) {
     const navigate = useNavigate();
     const [isHover, setIsHover] = useState(false);
     const quantity = useGetQuantity(product.id);
-    const [updateCartByUserId] = useUpdateCartByUserIdMutation();
-    const {cart} = useAppSelector(state => state.cartByUserId);
-    const dispatch = useAppDispatch();
+    const {addProductHandle, isLoading} = useAddProduct(product);
 
     function handleHover(hovered: boolean) {
         setIsHover(hovered);
@@ -32,18 +27,6 @@ function ProductCard({ product }: ProductCardProps) {
 
     function redirectToProduct(id: string) {
         navigate(`/product/${id}`);
-    }
-
-    function addProductHandle() {
-        dispatch(addProduct(productToProductCart(product)));
-        if(product) {
-            updateCartByUserId(
-                {
-                    id: cart?.id ?? 0,
-                    products: cart?.products ?? [],
-                    merge: true,
-                });
-        }
     }
 
     return (
@@ -68,13 +51,21 @@ function ProductCard({ product }: ProductCardProps) {
                 {
                     quantity === 0
                         ? (
-                            <Button
-                                ariaLabel='Add item to basket'
-                                className={styles.btn}
-                                onClick={addProductHandle}
-                            >
-                                <img src={basket} alt='' className={styles.icon}/>
-                            </Button>
+                            <>
+                                {
+                                    isLoading
+                                        ? <Loader className={styles.loader} />
+                                        : (
+                                            <Button
+                                                ariaLabel='Add item to basket'
+                                                className={styles.btn}
+                                                onClick={addProductHandle}
+                                            >
+                                                <img src={basket} alt='' className={styles.icon}/>
+                                            </Button>
+                                        )
+                                }
+                            </>
                         )
                         : (
                             <Counter

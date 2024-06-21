@@ -8,6 +8,8 @@ import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
 import {cartByUserIdSlice} from '../../app/store/slices/cartByUserId/cartByUserIdSlice.ts';
 import {useUpdateCartByUserIdMutation} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
 import {useEffect} from 'react';
+import {notificationErrorSlice} from '../../app/store/slices/notificationError/notificationError.ts';
+import {getErrorMsg} from '../../app/utils';
 
 interface CounterProps {
     product: ProductCart,
@@ -18,10 +20,11 @@ interface CounterProps {
 }
 
 const {getCart} = cartByUserIdSlice.actions;
+const {addErrorToast} = notificationErrorSlice.actions;
 
-function Counter({ product, quantity, stock, size, className }: CounterProps) {
+function Counter({product, quantity, stock, size, className}: CounterProps) {
     const dispatch = useAppDispatch();
-    const [updateCartByUserId, {data}] = useUpdateCartByUserIdMutation();
+    const [updateCartByUserId, {data, isError, error, isLoading}] = useUpdateCartByUserIdMutation();
     const {cart} = useAppSelector(state => state.cartByUserId);
 
     function incrementCounter() {
@@ -29,69 +32,75 @@ function Counter({ product, quantity, stock, size, className }: CounterProps) {
             {
                 id: cart?.id ?? 0,
                 products: cart?.products.map((item) => {
-                    if(item.id === product.id) {
-                        return {id: item.id, quantity: item.quantity+1};
+                    if (item.id === product.id) {
+                        return {id: item.id, quantity: item.quantity + 1};
                     }
                     return {id: item.id, quantity: item.quantity};
                 }) ?? [],
-        });
+            });
     }
 
     function decrementCounter() {
-        if(quantity > 1) {
+        if (quantity > 1) {
             updateCartByUserId(
                 {
                     id: cart?.id ?? 0,
                     products: cart?.products.map((item) => {
-                        if(item.id === product.id) {
-                            return {id: item.id, quantity: item.quantity-1};
+                        if (item.id === product.id) {
+                            return {id: item.id, quantity: item.quantity - 1};
                         }
                         return {id: item.id, quantity: item.quantity};
                     }) ?? [],
                 });
-        }
-        else {
+        } else {
             updateCartByUserId(
                 {
                     id: cart?.id ?? 0,
                     products: cart?.products.filter((item) => {
-                        if(item.id !== product.id) {
+                        if (item.id !== product.id) {
                             return {id: item.id, quantity: item.quantity};
                         }
-                        // return {id: item.id, quantity: item.quantity};
                     }) ?? [],
                 });
         }
     }
 
     useEffect(() => {
-        if(data) {
+        if (data) {
             dispatch(getCart(data));
         }
     }, [dispatch, data]);
 
+    useEffect(() => {
+        if (isError) {
+            dispatch(addErrorToast({message: getErrorMsg(error) ?? ''}));
+        }
+    }, [dispatch, error, isError]);
+
     return (
+
         <div className={cn(styles.counter, {[styles.counterBig]: size === 'big'}, className)}>
             <Button
-                ariaLabel='Reduce the number of items in the cart by 1'
+                ariaLabel="Reduce the number of items in the cart by 1"
                 onClick={decrementCounter}
                 className={cn(styles.btn, {[styles.btnBig]: size === 'big'})}
+                disabled={isLoading}
             >
-                <img src={minus} alt='' className={cn(styles.icon, {[styles.iconBig]: size === 'big'})} />
+                <img src={minus} alt="" className={cn(styles.icon, {[styles.iconBig]: size === 'big'})}/>
             </Button>
             <div className={cn(styles.count, {[styles.countBig]: size === 'big'})}>
                 {quantity}
             </div>
             <Button
-                ariaLabel='Increase the number of items in the basket by 1'
+                ariaLabel="Increase the number of items in the basket by 1"
                 onClick={incrementCounter}
                 className={cn(styles.btn, {[styles.btnBig]: size === 'big'})}
-                disabled={stock===quantity}
+                disabled={stock === quantity || isLoading}
             >
-                <img src={plus} alt='' className={cn(styles.icon, {[styles.iconBig]: size === 'big'})} />
+                <img src={plus} alt="" className={cn(styles.icon, {[styles.iconBig]: size === 'big'})}/>
             </Button>
         </div>
-    )
+    );
 }
 
 export default Counter;

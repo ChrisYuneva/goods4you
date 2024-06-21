@@ -10,17 +10,20 @@ import {useEffect} from 'react';
 import Loader from '../loader/loader.tsx';
 import {ProductCart} from '../../app/store/services/cartByUserId/types';
 import {useGetProductByIdQuery} from '../../app/store/services/products/productsApi.ts';
+import {getErrorMsg} from '../../app/utils';
+import {notificationErrorSlice} from '../../app/store/slices/notificationError/notificationError.ts';
 
 interface ProductItemProps {
     product: ProductCart;
 }
 
 const {getCart} = cartByUserIdSlice.actions;
+const {addErrorToast} = notificationErrorSlice.actions;
 
 function ProductItem({ product }: ProductItemProps) {
     const quantity = useGetQuantity(product.id);
     const dispatch = useAppDispatch();
-    const [ updateCartByUserId, {data, isLoading} ] = useUpdateCartByUserIdMutation();
+    const [ updateCartByUserId, {data, isLoading, isError: isErrorTest, error} ] = useUpdateCartByUserIdMutation();
     const {cart} = useAppSelector(state => state.cartByUserId);
     const {data: dataProduct} = useGetProductByIdQuery(product.id);
 
@@ -42,27 +45,42 @@ function ProductItem({ product }: ProductItemProps) {
         }
     }, [dispatch, data]);
 
+    useEffect(() => {
+        if(isErrorTest) {
+            dispatch(addErrorToast({message: getErrorMsg(error) ?? ''}));
+        }
+    }, [dispatch, error, isErrorTest]);
+
     return (
-        <article className={styles.wrapper}>
-            <Link to={`/product/${product.id}`} className={styles.product} aria-label='Go to product page'>
-                <img src={product.thumbnail} alt={product.title} className={styles.img}/>
-                <div className={styles.about}>
-                    <p className={styles.name}>{product.title}</p>
-                    <span className={styles.price}>{product.price}&#36;</span>
-                </div>
-            </Link>
-            <div className={styles.btnContainer}>
-                <Counter
-                    product={product}
-                    quantity={quantity}
-                    stock={dataProduct?.stock ?? 1}
-                />
-            </div>
-            <Button className={styles.btnDelete} onClick={deleteProduct}>Delete</Button>
-            {
-                isLoading && <Loader />
-            }
-        </article>
+        <>
+            <article className={styles.wrapper}>
+                {
+                    isLoading
+                        ?
+                        <Loader/>
+                        :
+                        <>
+                            <Link to={`/product/${product.id}`} className={styles.product}
+                                  aria-label='Go to product page'>
+                                <img src={product.thumbnail} alt={product.title} className={styles.img}/>
+                                <div className={styles.about}>
+                                    <p className={styles.name}>{product.title}</p>
+                                    <span className={styles.price}>{product.price}&#36;</span>
+                                </div>
+                            </Link>
+                            <div className={styles.btnContainer}>
+                                <Counter
+                                    product={product}
+                                    quantity={quantity}
+                                    stock={dataProduct?.stock ?? 0}
+                                />
+                            </div>
+                            <Button className={styles.btnDelete} onClick={deleteProduct}>Delete</Button>
+                        </>
+                }
+            </article>
+        </>
+
     )
 }
 

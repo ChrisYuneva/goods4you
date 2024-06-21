@@ -5,6 +5,7 @@ import {searchProductsParamsSlice} from './slices/searchProductParams/searchProd
 import {cartByUserIdSlice} from './slices/cartByUserId/cartByUserIdSlice.ts';
 import {authorizationApi} from './services/authorization/authorizationApi.ts';
 import {authSlice} from './slices/authSlice/authSlice.ts';
+import {notificationErrorSlice} from './slices/notificationError/notificationError.ts';
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
         searchProductsParams: searchProductsParamsSlice.reducer,
         cartByUserId: cartByUserIdSlice.reducer,
         auth: authSlice.reducer,
+        error: notificationErrorSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(productsApi.middleware, cartByUserIdApi.middleware, authorizationApi.middleware),

@@ -23,7 +23,7 @@ function Navigation({ type, openMenuHandler }: NavigationProps) {
         if(!cart && data && data.carts.length) {
             dispatch(getCart(data.carts[0]));
         }
-    }, [dispatch, data]);
+    }, [dispatch, data, cart]);
 
     return (
         <nav className={styles.wrapper}>

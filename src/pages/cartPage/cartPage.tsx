@@ -36,10 +36,10 @@ function CartPage() {
                                     <span className={styles.count}>{cart?.totalQuantity}</span>
                                 </DescriptionItem>
                                 <DescriptionItem title="Total price:" className={styles.totalPrice}>
-                                    <span className={styles.price}>{cart?.total}&#36;</span>
+                                    <span className={styles.price}>{cart?.total.toFixed(2)}&#36;</span>
                                 </DescriptionItem>
                                 <DescriptionItem title="Total price with discount:" className={styles.totalDiscount}>
-                                    <span className={styles.discount}>{cart?.discountedTotal}&#36;</span>
+                                    <span className={styles.discount}>{cart?.discountedTotal.toFixed(2)}&#36;</span>
                                 </DescriptionItem>
                             </section>
                         </>

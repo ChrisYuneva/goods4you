@@ -17,9 +17,10 @@
 
   &:disabled {
     cursor: default;
+    background-color: var(--placeholder-grey);
 
     &:hover {
-      background-color: var(--accent);
+      background-color: var(--placeholder-grey);
     }
   }
 

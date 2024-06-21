@@ -1,8 +1,15 @@
 import styles from './loader.module.scss';
+import cn from 'classnames';
 
-function Loader() {
+interface LoaderProps {
+    className?: string;
+}
+
+function Loader({ className }: LoaderProps) {
     return (
-        <div className={styles.loader}></div>
+        <div className={cn(styles.wrapper, className)}>
+            <div className={styles.loader}></div>
+        </div>
     )
 }
 

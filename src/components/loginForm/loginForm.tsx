@@ -6,6 +6,7 @@ import {useGetUserMutation} from '../../app/store/services/authorization/authori
 import {useNavigate} from 'react-router-dom';
 import AlertMsg from '../alertMsg/alertMsg.tsx';
 import {getErrorMsg} from '../../app/utils';
+import Loader from '../loader/loader.tsx';
 
 interface LoginForm {
     username: string;
@@ -13,7 +14,7 @@ interface LoginForm {
 }
 
 function LoginForm() {
-    const [getUser, { isError, error}] = useGetUserMutation();
+    const [getUser, { isError, error, isLoading}] = useGetUserMutation();
     const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState<LoginForm>({
         username: '',
@@ -59,13 +60,15 @@ function LoginForm() {
             />
             <Button
                 type='submit'
-                onClick={() => {}}
                 className={styles.btn}
             >
                 Login
             </Button>
             {
                 isError &&<AlertMsg message={getErrorMsg(error) ?? ''} type='error' />
+            }
+            {
+                isLoading && <Loader className={styles.loader}/>
             }
         </form>
     )

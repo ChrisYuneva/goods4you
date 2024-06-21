@@ -25,13 +25,13 @@ export function getErrorStatus(error: FetchBaseQueryError | SerializedError | un
     }
 }
 
-export function productToProductCart(product: Product): ProductCart {
+export function productToProductCart(product: Product, quantity = 0): ProductCart {
     return {
         discountPercentage: product.discountPercentage,
         discountedTotal: product.discountPercentage,
         id: product.id,
         price: product.price,
-        quantity: 0,
+        quantity,
         thumbnail: product.thumbnail,
         title: product.title,
         total: 0

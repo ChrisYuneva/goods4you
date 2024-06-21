@@ -85,6 +85,11 @@
         filter: invert(1);
       }
     }
+
+    .loader {
+      width: auto;
+      justify-content: flex-end;
+    }
   }
 }
 

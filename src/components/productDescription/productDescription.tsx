@@ -7,35 +7,19 @@ import Counter from '../counter/counter.tsx';
 import useGetQuantity from '../../app/hooks/useGetCount.tsx';
 import {Product} from '../../app/store/services/products/types';
 import {productToProductCart} from '../../app/utils';
-import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
-import {cartByUserIdSlice} from '../../app/store/slices/cartByUserId/cartByUserIdSlice.ts';
-import {useUpdateCartByUserIdMutation} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
+import Loader from '../loader/loader.tsx';
+import {useAddProduct} from '../../app/hooks/useAddProduct.tsx';
 
 interface ProductDescriptionProps {
    product: Product;
 }
 
-const {addProduct} = cartByUserIdSlice.actions;
-
 function ProductDescription({ product }: ProductDescriptionProps) {
     const ratingArr: number[] = new Array(Math.round(product.rating)).fill(1);
     const discountPrice = (product.price - (product.price*(product.discountPercentage/100))).toFixed(2);
     const quantity = useGetQuantity(product.id);
-    const dispatch = useAppDispatch();
-    const [updateCartByUserId] = useUpdateCartByUserIdMutation();
-    const {cart} = useAppSelector(state => state.cartByUserId);
 
-    function addProductHandle() {
-        dispatch(addProduct(productToProductCart(product)));
-        if(product) {
-            updateCartByUserId(
-                {
-                    id: cart?.id ?? 0,
-                    products: cart?.products ?? [],
-                    merge: true,
-                });
-        }
-    }
+    const {addProductHandle, isLoading} = useAddProduct(product)
 
     return (
         <section className={styles.description} tabIndex={0}>
@@ -78,11 +62,18 @@ function ProductDescription({ product }: ProductDescriptionProps) {
                 </DescriptionItem>
                 {
                     quantity === 0
-                        ? (
-                            <Button className={styles.btn} onClick={addProductHandle}>
-                                Add to cart
-                            </Button>
-                        )
+                        ?
+                        <>
+                            {
+                                isLoading
+                                    ? <Loader className={styles.loader} />
+                                    : (
+                                        <Button className={styles.btn} onClick={addProductHandle}>
+                                            Add to cart
+                                        </Button>
+                                    )
+                            }
+                        </>
                         : (
                             <Counter
                                 product={productToProductCart(product)}
