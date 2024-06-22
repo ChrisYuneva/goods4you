@@ -15,12 +15,10 @@ export function useAddProduct(product: Product) {
     const {cart} = useAppSelector(state => state.cartByUserId);
 
     function addProductHandle() {
-        // dispatch(addProduct(productToProductCart(product)));
         if(product) {
             updateCartByUserId(
                 {
                     id: cart?.id ?? 0,
-                    // products: cart?.products ?? [],
                     products: [...(cart?.products ?? []), productToProductCart(product, 1)],
                     merge: false,
                 });
