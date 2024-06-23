@@ -26,7 +26,7 @@ function LoginForm() {
         const authData = await getUser({
             username: loginForm.username,
             password: loginForm.password,
-            expiresInMins: 45,
+            expiresInMins: 60,
         }).unwrap();
 
         if(authData) {
