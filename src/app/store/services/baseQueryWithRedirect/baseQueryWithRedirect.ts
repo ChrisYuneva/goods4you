@@ -1,8 +1,7 @@
 import {BaseQueryFn, FetchArgs, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {FetchBaseQueryError} from '@reduxjs/toolkit/query';
-import {getToken} from '../../../utils';
 
-const baseQuery = fetchBaseQuery({ baseUrl: 'https://dummyjson.com/auth', headers: {'Authorization': `Bearer ${getToken()}`} })
+const baseQuery = fetchBaseQuery({ baseUrl: 'https://dummyjson.com/auth' })
 
 const baseQueryWithRedirect: BaseQueryFn<
     string | FetchArgs,

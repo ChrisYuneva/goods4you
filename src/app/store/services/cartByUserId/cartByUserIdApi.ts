@@ -1,5 +1,6 @@
 import {createApi} from '@reduxjs/toolkit/query/react';
 import {Cart, CartInfo, UpdateCartRequest} from './types';
+import {getToken} from '../../../utils';
 import baseQueryWithRedirect from '../baseQueryWithRedirect/baseQueryWithRedirect.ts';
 
 export const cartByUserIdApi = createApi({
@@ -10,6 +11,9 @@ export const cartByUserIdApi = createApi({
             query: (id) => (
                 {
                     url: `carts/user/${id}`,
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
+                    }
                 }
             )
         }),
@@ -17,6 +21,9 @@ export const cartByUserIdApi = createApi({
             query: ({id, products, merge}) => (
                 {
                     url: `carts/${id}`,
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`
+                    },
                     method: 'PUT',
                     body: {
                         merge,

@@ -1,6 +1,7 @@
 import {createApi} from '@reduxjs/toolkit/query/react';
 import {Product, Products} from './types';
 import {GetSearchProductsParams} from '../../slices/searchProductParams/types';
+import {getToken} from '../../../utils';
 import baseQueryWithRedirect from '../baseQueryWithRedirect/baseQueryWithRedirect.ts';
 
 export const productsApi = createApi({
@@ -11,6 +12,9 @@ export const productsApi = createApi({
             query: (id) => (
                 {
                     url: `products/${id}`,
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
+                    }
                 }
             ),
         }),
@@ -23,6 +27,9 @@ export const productsApi = createApi({
                         limit: limit,
                         skip: skip
                     },
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
+                    }
                 }
             ),
             serializeQueryArgs: ({ endpointName, queryArgs}) => {
