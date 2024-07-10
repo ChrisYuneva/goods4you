@@ -1,0 +1,98 @@
+@import '../../app/styles/breakpoints';
+
+.counter {
+  display: flex;
+  gap: 9px;
+  height: 48px;
+
+  @include for-phone {
+    width: 100%;
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    width: 48px;
+  }
+
+  .count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 140%;
+    background-color: var(--light-grey);
+    color: var(--grey);
+    border-radius: 4px;
+    width: 62px;
+
+    @include for-phone {
+      width: 50%;
+    }
+  }
+}
+
+.counterBig {
+  height: 67px;
+  gap: 15px;
+
+  @include for-phone {
+    height: 47px;
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  @include for-tablet {
+    height: 47px;
+    gap: 9px;
+  }
+
+  @include for-desktop {
+    height: 47px;
+  }
+
+  .btnBig {
+    padding: 32px 18px;
+    width: 67px;
+
+    @include for-phone {
+      width: 47px;
+      padding: 14px;
+    }
+
+    @include for-tablet {
+      width: 47px;
+      padding: 18px 14px;
+    }
+
+    @include for-desktop {
+      width: 47px;
+      padding: 18px 14px;
+    }
+
+    .iconBig {
+      width: 100%;
+    }
+  }
+
+  .count {
+    width: 106px;
+    font-size: 16px;
+
+    @include for-phone {
+      width: 60%;
+    }
+
+    @include for-tablet {
+      width: 25%;
+    }
+
+    @include for-desktop {
+      width: 89px;
+    }
+  }
+}

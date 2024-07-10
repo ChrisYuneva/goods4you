@@ -1,0 +1,103 @@
+@import '../../app/styles/breakpoints';
+
+.wrapper {
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @include for-phone {
+    height: auto;
+    flex-direction: column;
+  }
+
+  @include for-tablet {
+    height: auto;
+    flex-direction: column;
+    align-items: normal;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .product {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 362px;
+
+    @include for-phone {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .img {
+      width: 100px;
+      height: 57px;
+      object-fit: contain;
+
+      @include for-phone {
+        height: auto;
+        width: 100%;
+        padding-top: 0;
+      }
+    }
+
+    .about {
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 23px;
+        color: var(--grey);
+        margin: 0;
+      }
+
+      .price {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 26px;
+        color: var(--grey);
+      }
+    }
+
+    &:hover .name {
+      text-decoration: underline;
+    }
+  }
+
+  .btnContainer {
+    display: flex;
+
+    @include for-phone {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+
+  .btnDelete {
+    background: transparent;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+    color: var(--placeholder-grey);
+    padding: 0;
+    min-width: 57px;
+    height: 20px;
+
+    &:hover {
+      text-decoration: underline;
+      color: var(--grey);
+    }
+
+    @include for-phone {
+      align-self: flex-start;
+      min-width: auto;
+      margin-top: 25px;
+    }
+  }
+}

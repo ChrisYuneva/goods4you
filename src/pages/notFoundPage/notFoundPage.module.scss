@@ -1,0 +1,56 @@
+@import '../../app/styles/breakpoints';
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  box-sizing: border-box;
+
+  .error{
+    font-size: 200px;
+    color: var(--accent);
+    text-shadow:
+            1px 1px 1px var(--accent-hover),
+            2px 2px 1px var(--accent-hover),
+            3px 3px 1px var(--accent-hover),
+            4px 4px 1px var(--accent-hover),
+            5px 5px 1px var(--accent-hover),
+            6px 6px 1px var(--accent-hover),
+            7px 7px 1px var(--accent-hover),
+            8px 8px 1px var(--accent-hover),
+            25px 25px 8px rgba(0,0,0, 0.2);
+    margin-bottom: 54px;
+
+    @include for-phone {
+      font-size: 140px;
+    }
+  }
+
+  .text{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--grey);
+    text-align: center;
+    margin: 0;
+  }
+
+  .link {
+    background-color: var(--accent);
+    color: var(--white);
+    font-size: 20px;
+    line-height: 23px;
+    border-radius: 4px;
+    padding: 22px 46px;
+    cursor: pointer;
+    border: none;
+    transition: .4s;
+    text-decoration: none;
+    margin-top: 54px;
+
+    &:hover {
+      background-color: var(--accent-hover);
+    }
+  }
+}

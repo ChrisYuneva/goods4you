@@ -1,0 +1,95 @@
+@import '../../app/styles/breakpoints';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 370px;
+  gap: 10px;
+  cursor: pointer;
+
+  @include for-phone {
+    max-width: 100%;
+  }
+
+  .imgWrapper {
+    border-radius: 4px;
+    transition: .5s;
+    height: 293px;
+
+    .img {
+      mix-blend-mode: multiply;
+      border-radius: 4px;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .imgWrapperHover {
+    background-color: rgba(135, 135, 135, 0.25);
+    transition: .7s;
+  }
+
+  .product {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    height: 48px;
+
+    @include for-phone {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      min-width: 185px;
+
+      @include for-tablet {
+        min-width: auto;
+      }
+
+      .title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--grey);
+        margin: 0;
+        transition: 1s;
+      }
+
+      .titleHover {
+        text-decoration: underline;
+        transition: 1s;
+      }
+
+      .hiddenTitle {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+
+      .price {
+        font-size: 18px;
+        color: var(--grey);
+        line-height: 26px;
+      }
+    }
+
+    .btn {
+      padding: 13px 12px;
+      width: 48px;
+      height: 48px;
+
+      .icon {
+        filter: invert(1);
+      }
+    }
+
+    .loader {
+      width: auto;
+      justify-content: flex-end;
+    }
+  }
+}
+

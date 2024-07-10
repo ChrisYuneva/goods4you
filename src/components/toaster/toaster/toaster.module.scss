@@ -1,0 +1,41 @@
+.toast {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 4px;
+  color: var(--grey);
+  border: 2px solid var(--accent);
+  background-color: var(--light-grey);
+  animation: fadein .5s, fadeout 1s 4s;
+
+  .btn {
+    background-color: transparent;
+    padding: 0;
+    height: fit-content;
+
+    .icon {
+      filter: invert(1);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

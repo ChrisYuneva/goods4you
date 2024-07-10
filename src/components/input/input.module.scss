@@ -1,0 +1,34 @@
+@import '../../app/styles/breakpoints';
+
+.srOnly {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.input {
+  width: 100%;
+  border-radius: 4px;
+  background-color: var(--light-grey);
+  color: var(--grey);
+  font-size: 16px;
+  line-height: 140%;
+  padding: 21px 16px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+
+  &::placeholder {
+    font-size: 16px;
+    line-height: 140%;
+    color: var(--placeholder-grey);
+  }
+
+  @include for-phone {
+    width: auto;
+  }
+}

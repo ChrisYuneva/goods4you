@@ -1,0 +1,21 @@
+@import '../../app/styles/breakpoints';
+
+.outerContainer {
+  display: flex;
+  flex-direction: column;
+
+  @include for-desktop-up {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+  }
+
+  .loader {
+    height: 100vh;
+  }
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+}

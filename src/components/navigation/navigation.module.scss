@@ -1,0 +1,68 @@
+@import '../../app/styles/breakpoints';
+
+.wrapper {
+
+  .list {
+    display: flex;
+    gap: 33px;
+    list-style: none;
+    padding: 0;
+
+    @include for-phone {
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @include for-tablet {
+      gap: 23px;
+    }
+
+    .listItem {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--white);
+      text-decoration: none;
+      transition: .4s;
+
+      &:hover {
+        color: var(--hover-grey);
+        text-decoration: underline;
+        img {
+          filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(142deg) brightness(87%) contrast(94%);
+        }
+      }
+
+      @include for-phone {
+        font-size: 18px;
+      }
+
+      .icon {
+        filter: invert(1);
+      }
+
+      .counter {
+        position: absolute;
+        bottom: -4px;
+        right: -1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--accent);
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        color: var(--white);
+        font-size: 8px;
+      }
+    }
+
+    #basket {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+}

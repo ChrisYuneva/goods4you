@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Jost';
+  src: url('../../assets/fonts/Jost-Regular.woff2') format('woff2'), url('../../assets/fonts/Jost-Regular.woff') format('woff'), url('../../assets/fonts/Jost-Regular.ttf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0020-007F, U+00A0-00FF, U+0100-017F, U+0180-024F, U+2000-206F;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../assets/fonts/Jost-SemiBold.woff2') format('woff2'), url('../../assets/fonts/Jost-SemiBold.woff') format('woff'), url('../../assets/fonts/Jost-SemiBold.ttf') format('opentype');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  unicode-range: U+0020-007F, U+00A0-00FF, U+0100-017F, U+0180-024F, U+2000-206F;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../assets/fonts/Jost-Bold.woff2') format('woff2'), url('../../assets/fonts/Jost-Bold.woff') format('woff'), url('../../assets/fonts/Jost-Bold.ttf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  unicode-range: U+0020-007F, U+00A0-00FF, U+0100-017F, U+0180-024F, U+2000-206F;
+}

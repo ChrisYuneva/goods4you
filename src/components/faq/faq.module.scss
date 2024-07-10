@@ -1,0 +1,31 @@
+@import '../../app/styles/breakpoints';
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--purple);
+  padding-top: 35px;
+  padding-bottom: 121px;
+
+  .faqContent {
+    width: 880px;
+
+    @include for-phone {
+      width: 100%;
+    }
+
+    @include for-tablet {
+      width: 100%;
+    }
+
+    .faqTitle {
+      margin: 0 0 27px;
+      color: var(--white);
+      font-size: 30px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 41px;
+    }
+  }
+}

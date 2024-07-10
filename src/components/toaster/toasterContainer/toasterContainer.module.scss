@@ -1,0 +1,21 @@
+@import '../../../app/styles/breakpoints';
+
+.toastContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  max-width: 30%;
+  z-index: 1000;
+
+  @include for-phone {
+    max-width: 100%;
+  }
+
+  @include for-tablet {
+    max-width: 100%;
+  }
+
+  @include for-desktop {
+    max-width: 40%;
+  }
+}

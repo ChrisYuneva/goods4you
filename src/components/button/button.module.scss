@@ -1,0 +1,32 @@
+@import '../../app/styles/breakpoints';
+
+.btn {
+  background-color: var(--accent);
+  color: var(--white);
+  font-size: 16px;
+  line-height: 23px;
+  border-radius: 4px;
+  padding: 22px 46px;
+  cursor: pointer;
+  border: none;
+  transition: .4s;
+
+  &:hover {
+    background-color: var(--accent-hover);
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: var(--placeholder-grey);
+
+    &:hover {
+      background-color: var(--placeholder-grey);
+    }
+  }
+
+  @include for-phone {
+    padding: 12px 20px;
+    font-size: 14px;
+    width: auto;
+  }
+}

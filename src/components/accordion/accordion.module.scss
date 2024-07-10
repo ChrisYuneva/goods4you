@@ -1,0 +1,56 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 21px;
+  border-top: 1px solid var(--white);
+  cursor: pointer;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .icon {
+      transition: .4s;
+      padding-top: 19px;
+      will-change: transform;
+      user-select: none;
+      width: 25px;
+      height: 25px;
+    }
+
+    .rotate {
+      transform: rotate(45deg) translate(10px, -5px) scale(1.3);
+    }
+
+    .title {
+      font-size: 20px;
+      color: var(--white);
+      line-height: 29px;
+      padding-top: 30px;
+    }
+  }
+
+  .text {
+    margin: 0;
+    transition: height .4s ease, padding .4s ease;
+    will-change: opacity, height, padding;
+    height: 0;
+    opacity: 0;
+    padding: 0;
+  }
+
+  .visibleText {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    padding: 16px 0 19px;
+    line-height: 22px;
+    opacity: 1;
+    height: auto;
+  }
+}
+
+.last {
+  border-bottom: 1px solid var(--white);
+}

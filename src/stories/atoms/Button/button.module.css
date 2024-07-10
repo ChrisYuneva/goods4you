@@ -1,0 +1,10 @@
+.customClass {
+  background-color: transparent;
+  color: var(--placeholder-grey);
+}
+
+.customClass:hover {
+  background-color: transparent;
+  text-decoration: underline;
+  color: var(--grey);
+}

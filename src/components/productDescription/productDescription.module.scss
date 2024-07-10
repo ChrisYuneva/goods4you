@@ -1,0 +1,105 @@
+@import '../../app/styles/breakpoints';
+
+.description {
+  width: 100%;
+
+  .name {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;
+    color: var(--grey);
+    margin: 0;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include for-phone {
+      flex-direction: column;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    @include for-tablet {
+      flex-direction: column;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .text {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--grey);
+
+      @include for-phone {
+        line-height: inherit;
+      }
+
+      @include for-tablet {
+        line-height: inherit;
+      }
+    }
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 48px;
+
+    @include for-desktop {
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .rating {
+      display: flex;
+      gap: 4px;
+
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .text {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 23px;
+      color: var(--grey);
+    }
+
+    .btn {
+      margin-top: 37px;
+      max-width: 200px;
+
+      @include for-phone {
+        max-width: 100%;
+      }
+
+      @include for-desktop {
+        margin-top: 20px;
+      }
+    }
+
+    .counter {
+      margin-top: 37px;
+
+      @include for-phone {
+        max-width: 100%;
+      }
+
+      @include for-desktop {
+        margin-top: 20px;
+      }
+    }
+
+    .loader {
+      justify-content: flex-start;
+      margin-top: 37px;
+      height: 67px;
+    }
+  }
+}

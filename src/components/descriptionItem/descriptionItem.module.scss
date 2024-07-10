@@ -1,0 +1,14 @@
+@import '../../app/styles/breakpoints';
+
+.wrapper {
+  display: flex;
+  gap: 10px;
+  line-height: 23px;
+
+  .title {
+    color: var(--placeholder-grey);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+}
