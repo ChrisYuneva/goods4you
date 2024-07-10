@@ -17,8 +17,8 @@ function LoginForm() {
     const [getUser, { isError, error, isLoading}] = useGetUserMutation();
     const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState<LoginForm>({
-        username: '',
-        password: ''
+        username: 'liamg',
+        password: 'liamgpass'
     });
 
     async function onSubmitHandler(e: React.FormEvent<HTMLFormElement>) {
