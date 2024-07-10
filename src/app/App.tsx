@@ -9,35 +9,38 @@ import NotFoundPage from '../pages/notFoundPage/notFoundPage.tsx';
 import LoginPage from '../pages/loginPage/loginPage.tsx';
 
 export const router = createBrowserRouter([
+        {
+            element: <Layout/>,
+            children: [
+                {
+                    path: '/',
+                    element: <MainPage/>,
+                },
+                {
+                    path: '/cart',
+                    element: <CartPage/>,
+                },
+                {
+                    path: '/product/:id',
+                    element: <ProductPage/>,
+                },
+            ],
+            errorElement: <NotFoundPage/>,
+        },
+        {
+            path: '/login',
+            element: <LoginPage/>,
+        },
+    ],
     {
-        element: <Layout />,
-        children: [
-            {
-                path: '/',
-                element: <MainPage/>,
-            },
-            {
-                path: '/cart',
-                element: <CartPage/>,
-            },
-            {
-                path: '/product/:id',
-                element: <ProductPage />,
-            },
-        ],
-        errorElement: <NotFoundPage />,
-    },
-    {
-        path: '/login',
-        element: <LoginPage/>,
-    },
-]);
+        basename: '/goods4you',
+    });
 
 function App() {
 
     return (
         <RouterProvider router={router}/>
-    )
+    );
 }
 
 export default App;
