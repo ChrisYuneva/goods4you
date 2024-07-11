@@ -1,30 +1,47 @@
-# React + TypeScript + Vite
+# Интернет-магазин Goods4you
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Проект создан на основе задач, поставленных при участии в Открытых школах Холдинга Т1.
 
-Currently, two official plugins are available:
+## [Посмотреть демо](https://chrisyuneva.github.io/goods4you/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Реализовано:
 
-## Expanding the ESLint configuration
+- Развертывание и настройка проекта;
+- Верстка адаптивного интерфейса с подддержкой доступности;
+- Pixel perfect для разрешения экрана 1440px;
+- Авторизация с токеном, полученным с [API](https://dummyjson.com/docs/auth) и хранимым в localStorage;
+- Получение товаров и корзины с [API](https://dummyjson.com/docs);
+- Пагинация и оптимизация отправки запросов на сервер при поиске товара;
+- Управление состоянием корзины;
+- Обработка загрузок и ошибок;
+- Документирование интерфейса;
+- Тестирование.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Используемые технологии:
 
-- Configure the top-level `parserOptions` property like this:
+- Vite;
+- React;
+- TypeScript;
+- React router dom;
+- Redux Toolkit + RTK Query;
+- Storybook;
+- Jest.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Запуск приложения
+
+1. Установка зависимостей:
+```sh
+ npm install
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Запуск проекта:
+```sh
+npm run dev
+```
+3. Запуск тестов: 
+```sh
+ npm run test
+```
+4. Запуск Storybook: 
+```sh
+ npm run storybook
+```

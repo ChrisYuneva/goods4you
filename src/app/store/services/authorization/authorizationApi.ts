@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {AuthorizationRequest, AuthorizationResponse} from './types';
-import {getToken} from '../../../utils';
+import {AuthorizationRequest, AuthorizationResponse} from '@app/store/services/authorization/types';
+import {getToken} from '@app/utils';
 
 export const authorizationApi = createApi({
     reducerPath: 'authorizationApi',

@@ -1,12 +1,12 @@
 import styles from './productPage.module.scss';
 import cn from 'classnames';
 import {useState} from 'react';
-import ProductDescription from '../../components/productDescription/productDescription.tsx';
-import {useGetProductByIdQuery} from '../../app/store/services/products/productsApi.ts';
 import {useParams} from 'react-router-dom';
-import {getErrorMsg} from '../../app/utils';
-import SkeletonProductPage from '../../components/skeletons/skeletonProductPage/skeletonProductPage.tsx';
-import AlertMsg from '../../components/alertMsg/alertMsg.tsx';
+import {useGetProductByIdQuery} from '@app/store/services/products/productsApi.ts';
+import {getErrorMsg} from '@app/utils';
+import SkeletonProductPage from '@components/skeletons/skeletonProductPage/skeletonProductPage.tsx';
+import ProductDescription from '@components/productDescription/productDescription.tsx';
+import AlertMsg from '@components/alertMsg/alertMsg.tsx';
 
 function ProductPage() {
     const {id} = useParams<{ id: string }>();

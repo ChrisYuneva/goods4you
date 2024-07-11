@@ -1,6 +1,6 @@
 import {FetchBaseQueryError} from '@reduxjs/toolkit/query';
-import {getErrorMsg} from '../index.ts';
 import {SerializedError} from '@reduxjs/toolkit';
+import {getErrorMsg} from '@app/utils';
 
 describe('getErrorMsg', () => {
     test('should return JSON string of data if error is FetchBaseQueryError without error property', () => {

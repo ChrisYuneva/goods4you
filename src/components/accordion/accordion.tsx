@@ -1,4 +1,4 @@
-import cross from '../../assets/icons/cross.svg';
+import cross from '@/assets/icons/cross.svg';
 import styles from './accordion.module.scss';
 import cn from 'classnames';
 import React, {useState} from 'react';

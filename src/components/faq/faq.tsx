@@ -1,6 +1,6 @@
 import styles from './faq.module.scss';
 import {questions} from './constants/constants.ts';
-import Accordion from '../accordion/accordion.tsx';
+import Accordion from '@components/accordion/accordion.tsx';
 
 function Faq() {
     return (

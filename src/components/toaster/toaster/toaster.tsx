@@ -1,10 +1,9 @@
 import {useEffect} from 'react';
-import {notificationErrorSlice} from '../../../app/store/slices/notificationError/notificationError.ts';
-import plus from '../../../assets/icons/plus.svg';
-
+import plus from '@assets/icons/plus.svg';
 import styles from './toaster.module.scss';
-import {useAppDispatch} from '../../../app/hooks/useRedux.ts';
-import Button from '../../button/button.tsx';
+import {notificationErrorSlice} from '@app/store/slices/notificationError/notificationError.ts';
+import {useAppDispatch} from '@app/hooks/useRedux.ts';
+import Button from '@components/button/button.tsx';
 
 interface ToastProps {
     id: string;

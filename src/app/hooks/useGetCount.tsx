@@ -1,5 +1,5 @@
-import {useAppSelector} from './useRedux.ts';
 import {useMemo} from 'react';
+import {useAppSelector} from '@app/hooks/useRedux.ts';
 
 function useGetQuantity(id: number) {
     const {cart} = useAppSelector(state => state.cartByUserId);

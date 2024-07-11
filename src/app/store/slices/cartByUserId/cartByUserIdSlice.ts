@@ -1,6 +1,6 @@
 import type {PayloadAction} from '@reduxjs/toolkit';
 import {createSlice} from '@reduxjs/toolkit';
-import {Cart} from '../../services/cartByUserId/types';
+import {Cart} from '@app/store/services/cartByUserId/types';
 
 interface initialCart {
     cart: Cart | null

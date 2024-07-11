@@ -1,6 +1,6 @@
 import styles from './footer.module.scss';
-import Navigation from '../navigation/navigation.tsx';
 import {Link} from 'react-router-dom';
+import Navigation from '@components/navigation/navigation.tsx';
 
 function Footer() {
 

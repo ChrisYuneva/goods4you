@@ -3,6 +3,7 @@
 .outerContainer {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 
   @include for-desktop-up {
     margin-left: auto;
@@ -18,4 +19,5 @@
 .page {
   position: relative;
   z-index: 1;
+  flex: 1;
 }

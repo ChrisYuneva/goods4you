@@ -1,17 +1,17 @@
 import styles from './productItem.module.scss';
-import Button from '../button/button.tsx';
 import {Link} from 'react-router-dom';
-import Counter from '../counter/counter.tsx';
-import useGetQuantity from '../../app/hooks/useGetCount.tsx';
-import {cartByUserIdSlice} from '../../app/store/slices/cartByUserId/cartByUserIdSlice.ts';
-import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
-import {useUpdateCartByUserIdMutation} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
 import {useEffect} from 'react';
-import Loader from '../loader/loader.tsx';
-import {ProductCart} from '../../app/store/services/cartByUserId/types';
-import {useGetProductByIdQuery} from '../../app/store/services/products/productsApi.ts';
-import {getErrorMsg} from '../../app/utils';
-import {notificationErrorSlice} from '../../app/store/slices/notificationError/notificationError.ts';
+import {ProductCart} from '@app/store/services/cartByUserId/types';
+import {cartByUserIdSlice} from '@app/store/slices/cartByUserId/cartByUserIdSlice.ts';
+import {notificationErrorSlice} from '@app/store/slices/notificationError/notificationError.ts';
+import useGetQuantity from '@app/hooks/useGetCount.tsx';
+import {useAppDispatch, useAppSelector} from '@app/hooks/useRedux.ts';
+import {useUpdateCartByUserIdMutation} from '@app/store/services/cartByUserId/cartByUserIdApi.ts';
+import {useGetProductByIdQuery} from '@app/store/services/products/productsApi.ts';
+import {getErrorMsg} from '@app/utils';
+import Loader from '@components/loader/loader.tsx';
+import Counter from '@components/counter/counter.tsx';
+import Button from '@components/button/button.tsx';
 
 interface ProductItemProps {
     product: ProductCart;

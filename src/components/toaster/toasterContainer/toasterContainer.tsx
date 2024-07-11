@@ -1,7 +1,7 @@
 import React from 'react';
-import {useAppSelector} from '../../../app/hooks/useRedux.ts';
-import Toast from '../toaster/toaster.tsx';
 import styles from './toasterContainer.module.scss';
+import {useAppSelector} from '@app/hooks/useRedux.ts';
+import Toast from '@components/toaster/toaster/toaster.tsx';
 
 const ToastContainer: React.FC = () => {
     const {toast} = useAppSelector(state => state.error);

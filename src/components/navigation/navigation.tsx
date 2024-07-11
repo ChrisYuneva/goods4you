@@ -1,10 +1,10 @@
 import styles from './navigation.module.scss';
-import basket from '../../assets/icons/basket.svg'
+import basket from '@assets/icons/basket.svg'
 import {Link} from 'react-router-dom';
-import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
-import {cartByUserIdSlice} from '../../app/store/slices/cartByUserId/cartByUserIdSlice.ts';
-import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
 import {useEffect} from 'react';
+import {cartByUserIdSlice} from '@app/store/slices/cartByUserId/cartByUserIdSlice.ts';
+import {useAppDispatch, useAppSelector} from '@app/hooks/useRedux.ts';
+import {useGetCartByUserIdQuery} from '@app/store/services/cartByUserId/cartByUserIdApi.ts';
 
 interface NavigationProps {
     type: 'header' | 'footer';

@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Counter from '../../../components/counter/counter.tsx';
-
 import styles from './counter.module.css';
+import Counter from '@components/counter/counter.tsx';
+import {Provider} from 'react-redux';
+import {store} from '@app/store/store.ts';
 
 const meta = {
     title: 'Molecules/Counter',
     component: Counter,
+    decorators: [
+        Story => (
+            <Provider store={store}>
+                <Story />
+            </Provider>
+        )
+    ],
     parameters: {
     layout: 'centered',
 },

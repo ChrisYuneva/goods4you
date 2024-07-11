@@ -1,8 +1,8 @@
 import {useLocation} from 'react-router-dom';
 import {useEffect, useRef} from 'react';
-import Catalog from '../../components/catalog/catalog.tsx';
-import Banner from '../../components/banner/banner.tsx';
-import Faq from '../../components/faq/faq.tsx';
+import Banner from '@components/banner/banner.tsx';
+import Catalog from '@components/catalog/catalog.tsx';
+import Faq from '@components/faq/faq.tsx';
 
 function MainPage() {
     const location = useLocation();

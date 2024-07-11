@@ -1,14 +1,14 @@
 import styles from "./productDescription.module.scss";
-import DescriptionItem from '../descriptionItem/descriptionItem.tsx';
-import star from '../../assets/icons/star.svg';
-import Button from '../button/button.tsx';
+import star from '@assets/icons/star.svg';
 import {memo} from 'react';
-import Counter from '../counter/counter.tsx';
-import useGetQuantity from '../../app/hooks/useGetCount.tsx';
-import {Product} from '../../app/store/services/products/types';
-import {productToProductCart} from '../../app/utils';
-import Loader from '../loader/loader.tsx';
-import {useAddProduct} from '../../app/hooks/useAddProduct.tsx';
+import {Product} from '@app/store/services/products/types';
+import useGetQuantity from '@app/hooks/useGetCount.tsx';
+import {useAddProduct} from '@app/hooks/useAddProduct.tsx';
+import DescriptionItem from '@components/descriptionItem/descriptionItem.tsx';
+import Loader from '@components/loader/loader.tsx';
+import Button from '@components/button/button.tsx';
+import Counter from '@components/counter/counter.tsx';
+import {productToProductCart} from '@app/utils';
 
 interface ProductDescriptionProps {
    product: Product;

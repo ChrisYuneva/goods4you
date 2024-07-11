@@ -1,5 +1,5 @@
-import {Product} from '../../store/services/products/types';
-import {productToProductCart} from '../index.ts';
+import {Product} from '@app/store/services/products/types';
+import {productToProductCart} from '@app/utils';
 
 describe('productToProductCart', () => {
     const product: Product = {

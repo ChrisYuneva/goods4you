@@ -1,8 +1,8 @@
 import styles from './header.module.scss';
-import Navigation from '../navigation/navigation.tsx';
 import {Link, useLocation} from 'react-router-dom';
 import {useMemo} from 'react';
-import BurgerMenu from '../burgerMenu/burgerMenu.tsx';
+import Navigation from '@components/navigation/navigation.tsx';
+import BurgerMenu from '@components/burgerMenu/burgerMenu.tsx';
 
 function Header() {
     const location = useLocation();

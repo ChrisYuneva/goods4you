@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Navigation from '../../../components/navigation/navigation.tsx';
 import {withRouter} from 'storybook-addon-remix-react-router';
 import {Provider} from 'react-redux';
-import {store} from '../../../app/store/store.ts';
+import Navigation from '@components/navigation/navigation.tsx';
+import {store} from '@app/store/store.ts';
 
 const meta = {
     title: 'Molecules/Navigation',

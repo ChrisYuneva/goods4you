@@ -1,15 +1,15 @@
-import minus from '../../assets/icons/minus.svg';
-import plus from '../../assets/icons/plus.svg';
+import minus from '@assets/icons/minus.svg';
+import plus from '@assets/icons/plus.svg';
 import styles from './counter.module.scss';
-import Button from '../button/button.tsx';
 import cn from 'classnames';
-import {ProductCart} from '../../app/store/services/cartByUserId/types';
-import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
-import {cartByUserIdSlice} from '../../app/store/slices/cartByUserId/cartByUserIdSlice.ts';
-import {useUpdateCartByUserIdMutation} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
 import {useEffect} from 'react';
-import {notificationErrorSlice} from '../../app/store/slices/notificationError/notificationError.ts';
-import {getErrorMsg} from '../../app/utils';
+import {ProductCart} from '@app/store/services/cartByUserId/types';
+import {cartByUserIdSlice} from '@app/store/slices/cartByUserId/cartByUserIdSlice.ts';
+import {notificationErrorSlice} from '@app/store/slices/notificationError/notificationError.ts';
+import {useAppDispatch, useAppSelector} from '@app/hooks/useRedux.ts';
+import {useUpdateCartByUserIdMutation} from '@app/store/services/cartByUserId/cartByUserIdApi.ts';
+import {getErrorMsg} from '@app/utils';
+import Button from '@components/button/button.tsx';
 
 interface CounterProps {
     product: ProductCart,

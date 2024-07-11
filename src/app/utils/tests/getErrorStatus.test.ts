@@ -1,6 +1,6 @@
-import {getErrorStatus} from '../index.ts';
 import {FetchBaseQueryError} from '@reduxjs/toolkit/query';
 import {SerializedError} from '@reduxjs/toolkit';
+import {getErrorStatus} from '@app/utils';
 
 describe('getErrorStatus', () => {
     test('should return status if error is FetchBaseQueryError with status', () => {

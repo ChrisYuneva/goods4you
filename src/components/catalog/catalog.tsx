@@ -1,14 +1,14 @@
 import styles from './catalog.module.scss';
-import Button from '../button/button.tsx';
-import SearchForm from '../searchForm/searchForm.tsx';
 import cn from 'classnames';
-import {useGetSearchProductsQuery} from '../../app/store/services/products/productsApi.ts';
-import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
-import {searchProductsParamsSlice} from '../../app/store/slices/searchProductParams/searchProductParamsSlice.ts';
-import {getErrorMsg} from '../../app/utils';
-import SkeletonProductCard from '../skeletons/skeletonProductCard/skeletonProductCard.tsx';
-import ProductCard from '../productCard/productCard.tsx';
-import AlertMsg from '../alertMsg/alertMsg.tsx';
+import {searchProductsParamsSlice} from '@app/store/slices/searchProductParams/searchProductParamsSlice.ts';
+import {useAppDispatch, useAppSelector} from '@app/hooks/useRedux.ts';
+import {useGetSearchProductsQuery} from '@app/store/services/products/productsApi.ts';
+import AlertMsg from '@components/alertMsg/alertMsg.tsx';
+import SearchForm from '@components/searchForm/searchForm.tsx';
+import ProductCard from '@components/productCard/productCard.tsx';
+import Button from '@components/button/button.tsx';
+import {getErrorMsg} from '@app/utils';
+import SkeletonProductCard from '@components/skeletons/skeletonProductCard/skeletonProductCard.tsx';
 
 const { changeSearchProductsParams } = searchProductsParamsSlice.actions;
 

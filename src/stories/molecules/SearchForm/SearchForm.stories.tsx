@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import SearchForm from '../../../components/searchForm/searchForm.tsx';
-import {store} from '../../../app/store/store.ts';
+import type { Meta, StoryObj } from '@storybook/react';;
 import {Provider} from 'react-redux';
+import SearchForm from '@components/searchForm/searchForm.tsx';
+import {store} from '@app/store/store.ts';
 
 const meta = {
     title: 'Molecules/SearchForm',

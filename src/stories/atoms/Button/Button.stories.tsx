@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import Button from '../../../components/button/button.tsx';
-
 import styles from './button.module.css';
+import Button from '@components/button/button.tsx';
 
 const meta = {
   title: 'Atoms/Button',

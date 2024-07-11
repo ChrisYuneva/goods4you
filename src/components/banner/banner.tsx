@@ -1,5 +1,5 @@
 import styles from './banner.module.scss';
-import Button from '../button/button.tsx';
+import Button from '@components/button/button.tsx';
 import {useNavigate} from 'react-router-dom';
 
 function Banner() {

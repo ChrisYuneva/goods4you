@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {productsApi} from './services/products/productsApi.ts';
-import {cartByUserIdApi} from './services/cartByUserId/cartByUserIdApi.ts';
-import {searchProductsParamsSlice} from './slices/searchProductParams/searchProductParamsSlice.ts';
-import {cartByUserIdSlice} from './slices/cartByUserId/cartByUserIdSlice.ts';
-import {authorizationApi} from './services/authorization/authorizationApi.ts';
-import {authSlice} from './slices/authSlice/authSlice.ts';
-import {notificationErrorSlice} from './slices/notificationError/notificationError.ts';
+import {productsApi} from '@app/store/services/products/productsApi.ts';
+import {cartByUserIdApi} from '@app/store/services/cartByUserId/cartByUserIdApi.ts';
+import {authorizationApi} from '@app/store/services/authorization/authorizationApi.ts';
+import {searchProductsParamsSlice} from '@app/store/slices/searchProductParams/searchProductParamsSlice.ts';
+import {cartByUserIdSlice} from '@app/store/slices/cartByUserId/cartByUserIdSlice.ts';
+import {authSlice} from '@app/store/slices/authSlice/authSlice.ts';
+import {notificationErrorSlice} from '@app/store/slices/notificationError/notificationError.ts';
 
 export const store = configureStore({
     reducer: {

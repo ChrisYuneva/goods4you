@@ -1,7 +1,7 @@
 import {FetchBaseQueryError} from '@reduxjs/toolkit/query';
 import {SerializedError} from '@reduxjs/toolkit';
-import {Product} from '../store/services/products/types';
-import {ProductCart} from '../store/services/cartByUserId/types';
+import {Product} from '@app/store/services/products/types';
+import {ProductCart} from '@app/store/services/cartByUserId/types';
 
 export function getErrorMsg(error: FetchBaseQueryError | SerializedError | undefined) {
     if (error) {

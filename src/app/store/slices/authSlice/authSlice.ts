@@ -1,5 +1,5 @@
 import {createSlice, isAnyOf} from '@reduxjs/toolkit';
-import {authorizationApi} from '../../services/authorization/authorizationApi.ts';
+import {authorizationApi} from '@app/store/services/authorization/authorizationApi.ts';
 
 interface initialAuth {
     id: number | null;

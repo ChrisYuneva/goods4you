@@ -1,15 +1,15 @@
 import styles from "./productCard.module.scss";
 import {useState} from 'react';
 import cn from 'classnames';
-import Counter from '../counter/counter.tsx';
 import {useNavigate} from 'react-router-dom';
-import Button from '../button/button.tsx';
-import basket from '../../assets/icons/basket.svg';
-import useGetQuantity from '../../app/hooks/useGetCount.tsx';
-import {Product} from '../../app/store/services/products/types';
-import {productToProductCart} from '../../app/utils';
-import Loader from '../loader/loader.tsx';
-import {useAddProduct} from '../../app/hooks/useAddProduct.tsx';
+import basket from '@assets/icons/basket.svg';
+import useGetQuantity from '@app/hooks/useGetCount.tsx';
+import {useAddProduct} from '@app/hooks/useAddProduct.tsx';
+import Button from '@components/button/button.tsx';
+import Loader from '@components/loader/loader.tsx';
+import Counter from '@components/counter/counter.tsx';
+import {productToProductCart} from '@app/utils';
+import {Product} from '@app/store/services/products/types';
 
 interface ProductCardProps {
     product: Product,

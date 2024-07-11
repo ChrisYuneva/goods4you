@@ -1,12 +1,12 @@
 import styles from './loginForm.module.scss';
-import Input from '../input/input.tsx';
-import Button from '../button/button.tsx';
 import React, {useState} from 'react';
-import {useGetUserMutation} from '../../app/store/services/authorization/authorizationApi.ts';
 import {useNavigate} from 'react-router-dom';
-import AlertMsg from '../alertMsg/alertMsg.tsx';
-import {getErrorMsg} from '../../app/utils';
-import Loader from '../loader/loader.tsx';
+import {useGetUserMutation} from '@app/store/services/authorization/authorizationApi.ts';
+import Input from '@components/input/input.tsx';
+import Button from '@components/button/button.tsx';
+import AlertMsg from '@components/alertMsg/alertMsg.tsx';
+import {getErrorMsg} from '@app/utils';
+import Loader from '@components/loader/loader.tsx';
 
 interface LoginForm {
     username: string;

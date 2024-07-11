@@ -1,11 +1,11 @@
 import styles from "./searchForm.module.scss";
-import Input from '../input/input.tsx';
-import Button from '../button/button.tsx';
 import React, {useEffect, useState} from 'react';
-import {useAppDispatch, useAppSelector} from '../../app/hooks/useRedux.ts';
-import {searchProductsParamsSlice} from '../../app/store/slices/searchProductParams/searchProductParamsSlice.ts';
-import {useGetSearchProductsQuery} from '../../app/store/services/products/productsApi.ts';
-import useDebounce from '../../app/hooks/useDebounce.tsx';
+import {searchProductsParamsSlice} from '@app/store/slices/searchProductParams/searchProductParamsSlice.ts';
+import {useAppDispatch, useAppSelector} from '@app/hooks/useRedux.ts';
+import {useGetSearchProductsQuery} from '@app/store/services/products/productsApi.ts';
+import useDebounce from '@app/hooks/useDebounce.tsx';
+import Input from '@components/input/input.tsx';
+import Button from '@components/button/button.tsx';
 
 const { changeSearchProductsParams } = searchProductsParamsSlice.actions;
 
@@ -33,7 +33,7 @@ function SearchForm({loading}: SearchFormProps) {
                 skip: 0,
             }));
         }
-    }, [dispatch, searchValueDebounce]);
+    },[dispatch, searchValueDebounce]);
 
     function onChange(e: React.ChangeEvent<HTMLInputElement>) {
         const value = e.target.value;

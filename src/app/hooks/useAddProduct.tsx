@@ -1,10 +1,10 @@
-import {getErrorMsg, productToProductCart} from '../utils';
-import {Product} from '../store/services/products/types';
-import {useUpdateCartByUserIdMutation} from '../store/services/cartByUserId/cartByUserIdApi.ts';
-import {useAppDispatch, useAppSelector} from './useRedux.ts';
+import {cartByUserIdSlice} from '@app/store/slices/cartByUserId/cartByUserIdSlice.ts';
+import {notificationErrorSlice} from '@app/store/slices/notificationError/notificationError.ts';
+import {Product} from '@app/store/services/products/types';
+import {useAppDispatch, useAppSelector} from '@app/hooks/useRedux.ts';
+import {useUpdateCartByUserIdMutation} from '@app/store/services/cartByUserId/cartByUserIdApi.ts';
+import {getErrorMsg, productToProductCart} from '@app/utils';
 import {useEffect} from 'react';
-import {cartByUserIdSlice} from '../store/slices/cartByUserId/cartByUserIdSlice.ts';
-import {notificationErrorSlice} from '../store/slices/notificationError/notificationError.ts';
 
 const {getCart} = cartByUserIdSlice.actions;
 const {addErrorToast} = notificationErrorSlice.actions;

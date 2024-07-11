@@ -1,9 +1,9 @@
 import styles from './loginPage.module.scss';
-import LoginForm from '../../components/loginForm/loginForm.tsx';
-import Header from '../../components/header/header.tsx';
-import {getToken} from '../../app/utils';
 import {useNavigate} from 'react-router-dom';
 import {useEffect} from 'react';
+import {getToken} from '@app/utils';
+import LoginForm from '@components/loginForm/loginForm.tsx';
+import Header from '@components/header/header.tsx';
 
 function LoginPage() {
     const navigate = useNavigate();

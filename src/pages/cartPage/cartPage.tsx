@@ -1,13 +1,13 @@
 import styles from './cartPage.module.scss';
-import ProductItem from '../../components/productItem/productItem.tsx';
 import cn from 'classnames';
-import DescriptionItem from '../../components/descriptionItem/descriptionItem.tsx';
-import {useGetCartByUserIdQuery} from '../../app/store/services/cartByUserId/cartByUserIdApi.ts';
-import {getErrorMsg} from '../../app/utils';
-import SkeletonCartPage from '../../components/skeletons/ skeletonCartPage/ skeletonCartPage.tsx';
-import {useAppSelector} from '../../app/hooks/useRedux.ts';
-import AlertMsg from '../../components/alertMsg/alertMsg.tsx';
-import useAuth from '../../app/hooks/useAuth.tsx';
+import useAuth from '@app/hooks/useAuth.tsx';
+import {useGetCartByUserIdQuery} from '@app/store/services/cartByUserId/cartByUserIdApi.ts';
+import {useAppSelector} from '@app/hooks/useRedux.ts';
+import ProductItem from '@components/productItem/productItem.tsx';
+import DescriptionItem from '@components/descriptionItem/descriptionItem.tsx';
+import SkeletonCartPage from '@components/skeletons/ skeletonCartPage/ skeletonCartPage.tsx';
+import AlertMsg from '@components/alertMsg/alertMsg.tsx';
+import {getErrorMsg} from '@app/utils';
 
 function CartPage() {
     const id = useAuth();

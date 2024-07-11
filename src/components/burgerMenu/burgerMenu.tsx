@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import Navigation from '../navigation/navigation.tsx';
+import Navigation from '@components/navigation/navigation.tsx';
 import styles from './burgerMenu.module.scss';
 
 function BurgerMenu() {
